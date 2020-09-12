@@ -3,7 +3,7 @@ library(data.table)
 library(DESeq)
 library(limma)
 library(DESeq)
-setwd("/home/li/covid19/result01")
+setwd("/home/li/covid19/result01/DEseq2_Norm_remove_batch_volcano_finalized")
 cts<-read.table("gse147507_counts",head=TRUE)
 write.csv(cts,"gse147507_counts.csv")
 #setup DESeqDataSetFromMatrix
