@@ -1,8 +1,11 @@
 # COVID-19
-
 cell_5_6_7_16_BALF_assign.R
 
 Use "signature_gene_list_prior_25yueli.csv" to test BALF data.
+
+cell_5_6_7_16_PBMC_assign.R
+
+Use "signature_gene_list_prior_25yueli.csv" to test  data.
 
 5_6_7_16_2negative.R
 
