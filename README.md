@@ -20,3 +20,7 @@ DEseq2_Norm_remove_batch_volcano_finalized.R
 Downloaded the GSE147507_RawReadCounts_Human.tsv from gse147505. 
 Delete RSV, IAV and Series16_A549-ACE2_SARS-CoV-2_Rux_2. Normalize,remove batch effect of 36 and 24 celllines, DESeq, differetially expressed genes, volcano plot.
 
+cell24_4patients_25yueli.R
+
+Use 24 celllines as training set, 4 patients as test set, generte 25 gene signature.
+
