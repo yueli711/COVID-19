@@ -24,3 +24,6 @@ cell24_4patients_25yueli.R
 
 Use 24 celllines as training set, 4 patients as test set, generte 25 gene signature.
 
+single_cell.R
+
+Use hms_individual_integrated_OK.rds to process single cell data. 
