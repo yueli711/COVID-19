@@ -19,9 +19,13 @@ cell_5_6_7_16_PBMC_assign.R
 
 Use "signature_gene_list_prior_25yueli.csv" to test  data.
 
+single_cell_integrate.R
+
+input single cell files, filter, CreateSeuratObject, normalize, then integrat 12 samples 
+
 single_cell.R
 
-Use hms_individual_integrated_OK.rds to process single cell data. 
+Use hms_individual_integrated_OK.rds to process single cell data, draw the figures. 
 
 DEseq2_Norm_remove_batch_volcano_finalized.R 
 
