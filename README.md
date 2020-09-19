@@ -19,19 +19,6 @@ cell_5_6_7_16_PBMC_assign.R
 
 Use "signature_gene_list_prior_25yueli.csv" to test  data.
 
-5_6_7_16_2negative.R
-
-Use "signature_gene_list_prior_25yueli.csv" to test series2 as negative control.
-
-5_6_7_16_15positive.R
-
-Use "signature_gene_list_prior_25yueli.csv" to test series15 as positive control.
-
-
-
-
-cell24_4patients_25yueli.R
-
 single_cell.R
 
 Use hms_individual_integrated_OK.rds to process single cell data. 
