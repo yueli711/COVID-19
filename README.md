@@ -35,3 +35,5 @@ Delete RSV, IAV and Series16_A549-ACE2_SARS-CoV-2_Rux_2. Normalize,remove batch 
 complex_heatmap.R
 
 Draw complex heatmap to test remove batch effect.
+
+All the single cell data were uploaded in the https://www.dropbox.com/home/Research.Data/Yue_Li/singlecell_data.
