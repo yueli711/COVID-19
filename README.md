@@ -1,4 +1,16 @@
 # COVID-19
+cell24_4patients_25yueli.R
+
+Use 24 celllines as training set, 4 patients as test set, generte 25 gene signature.
+
+5_6_7_16_15positive.R
+
+Use "signature_gene_list_prior_25yueli.csv" to test series15 as positive control.
+
+5_6_7_16_2negative.R
+
+Use "signature_gene_list_prior_25yueli.csv" to test series2 as negative control.
+
 cell_5_6_7_16_BALF_assign.R
 
 Use "signature_gene_list_prior_25yueli.csv" to test BALF data.
@@ -15,15 +27,17 @@ Use "signature_gene_list_prior_25yueli.csv" to test series2 as negative control.
 
 Use "signature_gene_list_prior_25yueli.csv" to test series15 as positive control.
 
+
+
+
+cell24_4patients_25yueli.R
+
+single_cell.R
+
+Use hms_individual_integrated_OK.rds to process single cell data. 
+
 DEseq2_Norm_remove_batch_volcano_finalized.R 
 
 Downloaded the GSE147507_RawReadCounts_Human.tsv from gse147505. 
 Delete RSV, IAV and Series16_A549-ACE2_SARS-CoV-2_Rux_2. Normalize,remove batch effect of 36 and 24 celllines, DESeq, differetially expressed genes, volcano plot.
 
-cell24_4patients_25yueli.R
-
-Use 24 celllines as training set, 4 patients as test set, generte 25 gene signature.
-
-single_cell.R
-
-Use hms_individual_integrated_OK.rds to process single cell data. 
