@@ -3,11 +3,16 @@
 This repository presents all analyses done for the paper "Gene Expression Signature of SARS-CoV-2 Drives Development of COVID-19". Each folder contains the codes for the results described in the paper.
 
 
+# Datasets
 
+You will need the following datasets for running all the codes:
+
+1. Generate Table 1 and Figure 1A, B of 25 gene expression signature: cell24_4.csv, it will generate 24celllines_4patients_norm.txt during the process.
+2. Generate Figure 1C left： 
 
 cell24_4patients_25yueli.R
 
-Use 24 celllines as training set, 4 patients as test set, generte 25 gene signature.
+Use 24 celllines as training set, 4 patients as test set, generate 25 gene expression signature.
 
 5_6_7_16_15positive.R
 
