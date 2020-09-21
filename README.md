@@ -12,8 +12,7 @@ You will need the following datasets for running all the codes:
 3. Generate Figure 1C right: input files are [signature_gene_list_prior_25yueli.csv](https://github.com/yueli711/COVID-19/blob/master/Figure1C_right_5_6_7_16_2negative/signature_gene_list_prior_25yueli.csv) and [56716_2negative.txt](https://github.com/yueli711/COVID-19/blob/master/Figure1C_right_5_6_7_16_2negative/56716_2negative.txt), it will generate [cell5_6_7_16_2.csv](https://github.com/yueli711/COVID-19/blob/master/Figure1C_right_5_6_7_16_2negative/cell5_6_7_16_2.csv) during the process.
 4. Generate 1D BALF: input files are [signature_gene_list_prior_25yueli.csv](https://github.com/yueli711/COVID-19/blob/master/Figure1D_BALF/signature_gene_list_prior_25yueli.csv) and [cell_5_6_7_16_BALF_norm.txt](https://github.com/yueli711/COVID-19/blob/master/Figure1D_BALF/cell_5_6_7_16_BALF_norm.txt), it will generate [cell_5_6_7_16_BALF.csv](https://github.com/yueli711/COVID-19/blob/master/Figure1D_BALF/cell_5_6_7_16_BALF.csv) and [combat_cell56716_BALF.csv](https://github.com/yueli711/COVID-19/blob/master/Figure1D_BALF/combat_cell56716_BALF.csv) during the process.
 5. Generate 1D PBMC: input files are[signature_gene_list_prior_25yueli.csv](https://github.com/yueli711/COVID-19/blob/master/Figure1D_PBMC/signature_gene_list_prior_25yueli.csv) and [cell_5_6_7_16_PBMC_norm.txt](https://github.com/yueli711/COVID-19/blob/master/Figure1D_PBMC/cell_5_6_7_16_PBMC_norm.txt), it will generate [cell_5_6_7_16_PBMC.csv](https://github.com/yueli711/COVID-19/blob/master/Figure1D_PBMC/cell_5_6_7_16_PBMC.csv).
-cell24_4patients_25yueli.R
-
+6. integrate and figures of single cell: [hms_individual_integrated_OK.rds]( https://www.dropbox.com/home/Research.Data/Yue_Li/singlecell_data.).All the data are in https://www.dropbox.com/home/Research.Data/Yue_Li/singlecell_data.
 Use 24 celllines as training set, 4 patients as test set, generate 25 gene expression signature.
 
 5_6_7_16_15positive.R
@@ -49,4 +48,4 @@ complex_heatmap.R
 
 Draw complex heatmap to test remove batch effect.
 
-All the single cell data were uploaded in the https://www.dropbox.com/home/Research.Data/Yue_Li/singlecell_data.
+All the single cell data were uploaded in the  https://www.dropbox.com/home/Research.Data/Yue_Li/singlecell_data.
