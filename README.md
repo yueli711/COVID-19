@@ -32,7 +32,9 @@ You will need the following datasets for running all the codes:
 
 # Other Required Files:
 
-DEseq2_Norm_remove_batch_volcano_finalized.R and complex_heatmap.R
+'DEseq2_Norm_remove_batch_volcano_finalized.R'  Downloaded the GSE147507_RawReadCounts_Human.tsv from gse147505. Delete RSV, IAV and Series16_A549-ACE2_SARS-CoV-2_Rux_2. Normalize,remove batch effect of 36 and 24 celllines, DESeq, differetially expressed genes, volcano plot.
+
+'complex_heatmap.R
 
 
 
@@ -73,7 +75,9 @@ Use hms_individual_integrated_OK.rds to process single cell data, draw the figur
 
 DEseq2_Norm_remove_batch_volcano_finalized.R 
 
-Downloaded the GSE147507_RawReadCounts_Human.tsv from gse147505. 
+
+
+
 Delete RSV, IAV and Series16_A549-ACE2_SARS-CoV-2_Rux_2. Normalize,remove batch effect of 36 and 24 celllines, DESeq, differetially expressed genes, volcano plot.
 
 complex_heatmap.R
