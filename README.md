@@ -12,7 +12,38 @@ You will need the following datasets for running all the codes:
 3. Generate Figure 1C right: input files are [signature_gene_list_prior_25yueli.csv](https://github.com/yueli711/COVID-19/blob/master/Figure1C_right_5_6_7_16_2negative/signature_gene_list_prior_25yueli.csv) and [56716_2negative.txt](https://github.com/yueli711/COVID-19/blob/master/Figure1C_right_5_6_7_16_2negative/56716_2negative.txt), it will generate [cell5_6_7_16_2.csv](https://github.com/yueli711/COVID-19/blob/master/Figure1C_right_5_6_7_16_2negative/cell5_6_7_16_2.csv) during the process.
 4. Generate 1D BALF: input files are [signature_gene_list_prior_25yueli.csv](https://github.com/yueli711/COVID-19/blob/master/Figure1D_BALF/signature_gene_list_prior_25yueli.csv) and [cell_5_6_7_16_BALF_norm.txt](https://github.com/yueli711/COVID-19/blob/master/Figure1D_BALF/cell_5_6_7_16_BALF_norm.txt), it will generate [cell_5_6_7_16_BALF.csv](https://github.com/yueli711/COVID-19/blob/master/Figure1D_BALF/cell_5_6_7_16_BALF.csv) and [combat_cell56716_BALF.csv](https://github.com/yueli711/COVID-19/blob/master/Figure1D_BALF/combat_cell56716_BALF.csv) during the process.
 5. Generate 1D PBMC: input files are[signature_gene_list_prior_25yueli.csv](https://github.com/yueli711/COVID-19/blob/master/Figure1D_PBMC/signature_gene_list_prior_25yueli.csv) and [cell_5_6_7_16_PBMC_norm.txt](https://github.com/yueli711/COVID-19/blob/master/Figure1D_PBMC/cell_5_6_7_16_PBMC_norm.txt), it will generate [cell_5_6_7_16_PBMC.csv](https://github.com/yueli711/COVID-19/blob/master/Figure1D_PBMC/cell_5_6_7_16_PBMC.csv).
-6. integrate and figures of single cell: [hms_individual_integrated_OK.rds]( https://www.dropbox.com/home/Research.Data/Yue_Li/singlecell_data.).To download all the required files click [single_cell](https://www.dropbox.com/home/Research.Data/Yue_Li/singlecell_data.)
+6. integrate and figures of single cell: [hms_individual_integrated_OK.rds]( https://www.dropbox.com/home/Research.Data/Yue_Li/singlecell_data.).To download all the required files click [single_cell](https://www.dropbox.com/home/Research.Data/Yue_Li/singlecell_data.).
+
+
+# Required R packages
+
+1. Seurat
+2. ggplots
+3. cowplot
+4. scater
+5. scran
+6. BioParallel
+7. BiocNeighbors
+8. data.table
+9. ASSIGN
+10. sva
+11. stringr
+
+
+# Other Required Files:
+
+DEseq2_Norm_remove_batch_volcano_finalized.R and complex_heatmap.R
+
+
+
+
+
+
+
+
+
+
+
 
 Use 24 celllines as training set, 4 patients as test set, generate 25 gene expression signature.
 
