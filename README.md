@@ -1,4 +1,10 @@
 # COVID-19
+
+This repository presents all analyses done for the paper "Gene Expression Signature of SARS-CoV-2 Drives Development of COVID-19". Each folder contains the codes for the results described in the paper.
+
+
+
+
 cell24_4patients_25yueli.R
 
 Use 24 celllines as training set, 4 patients as test set, generte 25 gene signature.
