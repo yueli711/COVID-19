@@ -46,6 +46,6 @@ You will need the following datasets for running all the codes:
 
 `single_cell.R` Use hms_individual_integrated_OK.rds to process single cell data, draw the figures.
 
-`DEseq2_Norm_remove_batch_volcano_finalized.R` Delete RSV, IAV and Series16_A549-ACE2_SARS-CoV-2_Rux_2. Normalize,remove batch effect of 36 and 24 celllines, DESeq, differetially expressed genes, volcano plot.
+`DEseq2_Norm_remove_batch_volcano_finalized.R` Excluded all the fles of not infected with SARS-CoV-2, not from homo sapiens or another file Series16_A549-ACE2_SARS-CoV-2_Rux_2. Normalize,remove batch effect of 36 and 24 celllines, DESeq, differetially expressed genes, volcano plot.
 
 `complex_heatmap.R` Draw complex heatmap to test remove batch effect.
