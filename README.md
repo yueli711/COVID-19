@@ -1,6 +1,6 @@
 # COVID-19
 
-This repository presents all analyses done for the paper "Gene Expression Signature of SARS-CoV-2 Drives Development of COVID-19". Each folder contains the codes for the each figures shown in the paper.
+This repository presents all analyses done for the paper "Gene Expression Signature of SARS-CoV-2 Drives Development of COVID-19". Each folder contains the codes for each of the figure shown in the paper.
 
 
 # Datasets
