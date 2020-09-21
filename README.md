@@ -1,6 +1,6 @@
 # COVID-19
 
-This repository presents all analyses done for the paper "Gene Expression Signature of SARS-CoV-2 Drives Development of COVID-19". Each folder contains the codes for the results described in the paper.
+This repository presents all analyses done for the paper "Gene Expression Signature of SARS-CoV-2 Drives Development of COVID-19". Each folder contains the codes for the each figures shown in the paper.
 
 
 # Datasets
@@ -8,7 +8,10 @@ This repository presents all analyses done for the paper "Gene Expression Signat
 You will need the following datasets for running all the codes:
 
 1. Generate Table 1 and Figure 1A, B of 25 gene expression signature: cell24_4.csv, it will generate 24celllines_4patients_norm.txt during the process.
-2. Generate Figure 1C left： 
+2. Generate Figure 1C left: cell5_6_7_16_15.csv, signature_gene_list_prior_25yueli.csv, it will generate 56716_15positive.txt during the process.
+3. Generate Figure 1C right: cell5_6_7_16_2.csv, signature_gene_list_prior_25yueli.csv, it will generate 56716_2negative.txt during the process.
+4. Generate 1D BALF: cell_5_6_7_16_BALF_norm.txt, signature_gene_list_prior_25yueli.csv, it will generate cell_5_6_7_16_balf.csv and combat_cell56716_BALF.csv during the process.
+5. Generate 
 
 cell24_4patients_25yueli.R
 
