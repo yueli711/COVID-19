@@ -33,11 +33,19 @@ You will need the following datasets for running all the codes:
 # Explain all the R files:
 
 `cell24_4patients_25yueli.R` Use 24 celllines as training set, 4 patients as test set, generate 25 gene expression signature.
+
 `5_6_7_16_15positive.R` Use "signature_gene_list_prior_25yueli.csv" to test series15 as positive control.
+
 `5_6_7_16_2negative.R` Use "signature_gene_list_prior_25yueli.csv" to test series2 as negative control.
+
 `cell_5_6_7_16_BALF_assign.R` Use "signature_gene_list_prior_25yueli.csv" to test BALF data.
+
 `cell_5_6_7_16_PBMC_assign.R`  Use "signature_gene_list_prior_25yueli.csv" to test data.
+
 `single_cell_integrate.R` Input single cell files, filter, CreateSeuratObject, normalize, then integrat 12 samples.
+
 `single_cell.R` Use hms_individual_integrated_OK.rds to process single cell data, draw the figures.
+
 `DEseq2_Norm_remove_batch_volcano_finalized.R` Delete RSV, IAV and Series16_A549-ACE2_SARS-CoV-2_Rux_2. Normalize,remove batch effect of 36 and 24 celllines, DESeq, differetially expressed genes, volcano plot.
+
 `complex_heatmap.R` Draw complex heatmap to test remove batch effect.
