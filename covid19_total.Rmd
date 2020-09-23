@@ -1,0 +1,667 @@
+---
+title: "covid19_total"
+author: "yueli"
+date: "9/23/2020"
+output: html_document
+---
+
+```{r}
+library(stringr)
+library(sva)
+library(ASSIGN)
+library(data.table)
+suppressMessages(require(Seurat))
+suppressMessages(require(ggplot2))
+suppressMessages(require(cowplot))
+suppressMessages(require(scater))
+suppressMessages(require(scran))
+suppressMessages(require(BiocParallel))
+suppressMessages(require(BiocNeighbors))
+#generate 25 gene expression signature
+setwd("/home/li/covid19/result01/total")
+cell24_4<-read.table("24celllines_4patients_norm.txt")
+write.csv(cell24_4,"cell24_4.csv")
+
+cell24_4<-read.csv("cell24_4.csv",header=TRUE)
+cell24_4<-(log2(data.frame(cell24_4,check.names = F, row.names=1)+1))
+colnames(cell24_4)
+rownames(cell24_4)
+plot(hclust(dist(t(cell24_4)),method="complete"))
+cell24_4_filt<-(cell24_4[apply(cell24_4==0,1,mean)<0.1,])
+pca<-prcomp(t(cell24_4_filt))
+plot(pca)
+{plot(pca$x[,1],pca$x[,2])
+  points(pca$x[1:14,1],pca$x[1:14,2],col=2,pch=2)
+  points(pca$x[15:28,1],pca$x[15:28,2],col=3,pch=2)
+}
+which(pca$x[,1]< -100)
+which(pca$x[,1]< -20)
+which(pca$x[,1]< 0)
+
+bat <-
+  as.data.frame(cbind(
+    colnames(cell24_4_filt),
+    c(
+      rep(1, 3),
+      rep(2, 3),
+      rep(3, 3),
+      rep(4, 3),
+      rep(5, 2),
+      rep(1, 3),
+      rep(2, 3),
+      rep(3, 3),
+      rep(4, 3),
+      rep(5, 2)
+    ),
+    c(rep(1, 14), rep(2, 14))
+  ))
+
+mod<-model.matrix(~as.factor(bat[,3]), data=bat)
+
+combat_cell24_4<-ComBat(dat = as.matrix(cell24_4_filt,),batch = (bat[,2]),mod=mod,par.prior = T)
+##PCA post combat
+pca<-prcomp(t(combat_cell24_4))
+plot(pca)
+{plot(pca$x[,1],pca$x[,2])
+  points(pca$x[1:14,1],pca$x[1:14,2], main="Top 2 PCs",col=2)
+  points(pca$x[15:28,1],pca$x[15:28,2], main="Top 2 PCs",col=3)
+}
+
+which(pca$x[,1]< -50)
+which(pca$x[,2]< -50)
+
+c_mock<-as.matrix(combat_cell24_4[,c(1:12)])
+c_cov<-as.matrix(combat_cell24_4[,c(15:26)])
+test<-as.matrix(combat_cell24_4[,c(13:14,27:28)])
+trainingLabela <- list(control=list(mock=1:12),cov=13:24)
+basedir<-getwd()
+sub_dir <- paste(basedir,paste("cov", 25, sep=""),sep='/')
+dir.create(sub_dir)
+set.seed(1220)
+assign.wrapper(
+  trainingData = cbind(c_mock, c_cov),
+  testData = test,
+  trainingLabel = trainingLabela,
+  geneList = NULL,
+  n_sigGene = 25,
+  adaptive_B = T,
+  adaptive_S = F,
+  outputDir = sub_dir,
+  p_beta = 0.01,
+  theta0 = 0.05,
+  theta1 = 0.9,
+  iter = 2000,
+  burn_in = 1000)
+
+#use series 15 to test positive
+cell5_6_7_16_15<-read.table("56716_15positive.txt",header=TRUE)
+write.csv(cell5_6_7_16_15,"cell5_6_7_16_15.csv")
+mock_cov<-read.csv("cell5_6_7_16_15.csv", header = TRUE)
+mock_cov<-(log2(data.frame(mock_cov,check.names = F, row.names=1)+1))
+mock_cov_filt<-(mock_cov[apply(mock_cov==0,1,mean)<0.1,])
+bat <-as.data.frame(cbind(
+  colnames(cell5_6_7_16_15),
+  c(rep(1, 3),rep(2, 3),rep(3, 3),rep(4, 3),rep(5, 2),rep(1, 3),rep(2, 3),rep(3, 3),rep(4, 3),rep(5, 2)),
+  c(rep(1, 14), rep(2, 14))))
+mod<-model.matrix(~as.factor(bat[,3]), data=bat)
+combat_mock_cov<-ComBat(dat = as.matrix(mock_cov_filt,),batch = (bat[,2]),mod=mod,par.prior = T)
+
+c_mock<-as.matrix(combat_mock_cov[,c(1:12)])
+c_cov<-as.matrix(combat_mock_cov[,c(15:26)])
+test<-as.matrix(combat_mock_cov[,c(13:14,27:28)])
+
+trainingLabela <- list(control=list(mock=1:12),cov=13:24)
+genelist_25<-read.csv("signature_gene_list_prior_25yueli.csv")
+
+basedir<-getwd()
+sub_dir <- paste(basedir,paste("cov_positive", 25, sep=""),sep='/')
+dir.create(sub_dir)
+set.seed(1220)
+assign.wrapper(
+  trainingData = cbind(c_mock, c_cov),
+  testData = test,
+  trainingLabel = trainingLabela,
+  geneList = list(genelist_25$X),
+  adaptive_B = T,
+  adaptive_S = F,
+  outputDir = sub_dir,
+  p_beta = 0.01,
+  theta0 = 0.05,
+  theta1 = 0.9,
+  iter = 2000,
+  burn_in = 1000)
+
+#use series 2 to test negative
+cell5_6_7_16_2<-read.table("56716_2negative.txt",header=TRUE)
+write.csv(cell5_6_7_16_2,"cell5_6_7_16_2.csv")
+mock_cov<-read.csv("cell5_6_7_16_2.csv", header = TRUE)
+mock_cov<-(log2(data.frame(mock_cov,check.names = F, row.names=1)+1))
+mock_cov_filt<-(mock_cov[apply(mock_cov==0,1,mean)<0.1,])
+bat <-as.data.frame(cbind(
+  colnames(cell5_6_7_16_2),
+  c(rep(1, 3),rep(2, 3),rep(3, 3),rep(4, 3),rep(5, 3),rep(1, 3),rep(2, 3),rep(3, 3),rep(4, 3),rep(5, 3)),
+  c(rep(1, 15), rep(2, 15))))
+mod<-model.matrix(~as.factor(bat[,3]), data=bat)
+combat_mock_cov<-ComBat(dat = as.matrix(mock_cov_filt,),batch = (bat[,2]),mod=mod,par.prior = T)
+
+c_mock<-as.matrix(combat_mock_cov[,c(1:12)])
+c_cov<-as.matrix(combat_mock_cov[,c(16:27)])
+test<-as.matrix(combat_mock_cov[,c(13:15,28:30)])
+
+trainingLabela <- list(control=list(mock=1:12),cov=13:24)
+genelist_25<-read.csv("signature_gene_list_prior_25yueli.csv")
+
+basedir<-getwd()
+sub_dir <- paste(basedir,paste("cov_negative", 25, sep=""),sep='/')
+dir.create(sub_dir)
+set.seed(1220)
+assign.wrapper(
+  trainingData = cbind(c_mock, c_cov),
+  testData = test,
+  trainingLabel = trainingLabela,
+  geneList = list(genelist_25$X),
+  adaptive_B = T,
+  adaptive_S = F,
+  outputDir = sub_dir,
+  p_beta = 0.01,
+  theta0 = 0.05,
+  theta1 = 0.9,
+  iter = 2000,
+  burn_in = 1000)
+
+# BALF
+cell_5_6_7_16_BALF<-read.table("cell_5_6_7_16_BALF_norm.txt",head=TRUE)
+write.csv(cell_5_6_7_16_BALF,"cell_5_6_7_16_BALF.csv")
+cells_4_BALF<-read.csv("cell_5_6_7_16_BALF.csv",header=TRUE)
+cells_4_BALF<-(log2(data.frame(cells_4_BALF,check.names = F, row.names=1)+1))
+colnames(cells_4_BALF)
+rownames(cells_4_BALF)
+plot(hclust(dist(t(cells_4_BALF)),method="complete"))##samples are rather clustering by type than the COV2 infection status
+#Series 15 is furthest from the others and that makes sense since these are from patients rather than cell lines. We should exclude Series 15 from the signature generation dataset.
+
+##filter all zeroes
+cells_4_BALF_filt<-(cells_4_BALF[apply(cells_4_BALF==0,1,mean)<0.1,])
+#precombat PCA
+pca<-prcomp(t(cells_4_BALF_filt))
+plot(pca)
+{plot(pca$x[,1],pca$x[,2])
+  points(pca$x[1:15,1],pca$x[1:15,2],col=2,pch=2)
+  points(pca$x[16:31,1],pca$x[16:31,2],col=3,pch=2)
+}
+which(pca$x[,1]< -100)
+which(pca$x[,1]< -20)
+which(pca$x[,1]< 0)
+###we need to batch adjust based on the cell types
+##Series5_A549-1 Series6_A549.ACE2-2 Series7_Calu3-3 Series16_A549.ACE2-4, patients-5
+bat <-as.data.frame(cbind(
+  colnames(cells_4_BALF_filt),
+  c(rep(1, 3),rep(2, 3),rep(3, 3),rep(4, 3),rep(5, 3),rep(1, 3),rep(2, 3),rep(3, 3),rep(4, 3),rep(6, 2), rep(7, 2)),
+  c(rep(1, 15), rep(2, 16))))
+mod<-model.matrix(~as.factor(bat[,3]), data=bat)
+combat_mock_cov<-ComBat(dat = as.matrix(cells_4_BALF_filt,),batch = (bat[,2]),mod=mod,par.prior = T)
+write.csv(combat_mock_cov,"combat_cell56716_BALF.csv")
+plot(hclust(dist(t(combat_mock_cov)),method="complete"))
+
+##PCA post combat
+pca<-prcomp(t(combat_mock_cov))
+plot(pca)
+{plot(pca$x[,1],pca$x[,2])
+  points(pca$x[1:15,1],pca$x[1:15,2], main="Top 2 PCs",col=2)
+  points(pca$x[16:31,1],pca$x[16:31,2], main="Top 2 PCs",col=3)}
+which(pca$x[,1]< -50)
+which(pca$x[,2]< -50)
+
+########running assign with the best 25 genes found in the cell line data########
+c_mock<-as.matrix(combat_mock_cov[,c(1:12)])
+c_cov<-as.matrix(combat_mock_cov[,c(16:27)])
+test<-as.matrix(combat_mock_cov[,c(13:15,28:31)])
+trainingLabela <- list(control=list(mock=1:12),cov=13:24)
+genelist_25<-read.csv("signature_gene_list_prior_25yueli.csv")
+basedir<-getwd()
+sub_dir <- paste(basedir,paste("cov_BALF", 25, sep=""),sep='/')
+dir.create(sub_dir)
+set.seed(1220)
+assign.wrapper(
+  trainingData = cbind(c_mock, c_cov),
+  testData = test,
+  trainingLabel = trainingLabela,
+  geneList = list(genelist_25$X),
+  adaptive_B = T,
+  adaptive_S = F,
+  outputDir = sub_dir,
+  p_beta = 0.01,
+  theta0 = 0.05,
+  theta1 = 0.9,
+  iter = 2000,
+  burn_in = 1000)
+
+#PBMC
+cell_5_6_7_16_PBMC<-read.table("cell_5_6_7_16_PBMC_norm.txt",head=TRUE)
+write.csv(cell_5_6_7_16_PBMC,"cell_5_6_7_16_PBMC.csv")
+cells_4_PBMC<-read.csv("cell_5_6_7_16_PBMC.csv",header=TRUE)
+cells_4_PBMC<-(log2(data.frame(cells_4_PBMC,check.names = F, row.names=1)+1))
+colnames(cells_4_PBMC)
+#rownames(cells_4_PBMC)
+plot(hclust(dist(t(cells_4_PBMC)),method="complete"))##samples are rather clustering by type than the COV2 infection status
+#Series 15 is furthest from the others and that makes sense since these are from patients rather than cell lines. We should exclude Series 15 from the signature generation dataset.
+
+##filter all zeroes
+cells_4_PBMC_filt<-(cells_4_PBMC[apply(cells_4_PBMC==0,1,mean)<0.1,])
+#precombat PCA
+pca<-prcomp(t(cells_4_PBMC_filt))
+plot(pca)
+{plot(pca$x[,1],pca$x[,2])
+  points(pca$x[1:15,1],pca$x[1:15,2],col=2,pch=2)
+  points(pca$x[16:30,1],pca$x[16:30,2],col=3,pch=2)
+}
+which(pca$x[,1]< -100)
+which(pca$x[,1]< -20)
+which(pca$x[,1]< 0)
+###we need to batch adjust based on the cell types
+##Series5_A549-1 Series6_A549.ACE2-2 Series7_Calu3-3 Series16_A549.ACE2-4, patients-5
+bat <-as.data.frame(cbind(
+  colnames(cells_4_PBMC_filt),
+  c(rep(1, 3),rep(2, 3),rep(3, 3),rep(4, 3),rep(5, 3),rep(1, 3),rep(2, 3),rep(3, 3),rep(4, 3),rep(6, 3)),
+  c(rep(1, 15), rep(2, 15))))
+mod<-model.matrix(~as.factor(bat[,3]), data=bat)
+combat_mock_cov<-ComBat(dat = as.matrix(cells_4_PBMC_filt,),batch = (bat[,2]),mod=mod,par.prior = T)
+##PCA post combat
+pca<-prcomp(t(combat_mock_cov))
+plot(pca)
+{plot(pca$x[,1],pca$x[,2])
+  points(pca$x[1:15,1],pca$x[1:15,2], main="Top 2 PCs",col=2)
+  points(pca$x[16:30,1],pca$x[16:30,2], main="Top 2 PCs",col=3)}
+which(pca$x[,1]< -50)
+which(pca$x[,2]< -50)
+
+plot(hclust(dist(t(combat_mock_cov)),method="complete"))
+
+########running assign with the best 25 genes found in the cell line data########
+#combat_mock_cov<-read.table("combat_cell56716_PBMC.txt",header=TRUE)
+c_mock<-as.matrix(combat_mock_cov[,c(1:12)])
+c_cov<-as.matrix(combat_mock_cov[,c(16:27)])
+test<-as.matrix(combat_mock_cov[,c(13:15,28:30)])
+trainingLabela <- list(control=list(mock=1:12),cov=13:24)
+genelist_25<-read.csv("signature_gene_list_prior_25yueli.csv")
+basedir<-getwd()
+sub_dir <- paste(basedir,paste("cov_PBMC", 25, sep=""),sep='/')
+dir.create(sub_dir)
+set.seed(1220)
+assign.wrapper(
+  trainingData = cbind(c_mock, c_cov),
+  testData = test,
+  trainingLabel = trainingLabela,
+  geneList = list(genelist_25$X),
+  n_sigGene = 25,
+  adaptive_B = T,
+  adaptive_S = F,
+  outputDir = sub_dir,
+  p_beta = 0.01,
+  theta0 = 0.05,
+  theta1 = 0.9,
+  iter = 2000,
+  burn_in = 1000)
+
+#single_cell_integrate
+#input, CreateSeuratObject, filter, save
+a<-"hc_51_02.csv"
+a1<-data.frame(fread(a),check.names=FALSE, row.names=1)
+pbmc<- CreateSeuratObject(counts = a1, project = "h1", min.cells = 3, min.features = 200)
+pbmc
+pbmc[["percent.mt"]] <- PercentageFeatureSet(pbmc, pattern = "^MT-")
+pbmc <- subset(pbmc, subset = nFeature_RNA > 200 & nFeature_RNA < 2500 & percent.mt < 5)
+pbmc <- NormalizeData(pbmc, normalization.method = "LogNormalize", scale.factor = 10000)
+pbmc <- FindVariableFeatures(pbmc, selection.method = "vst", nfeatures = 2000)
+all.genes <- rownames(pbmc)
+pbmc <- ScaleData(pbmc, features = all.genes)
+pbmc <- RunPCA(pbmc, features = VariableFeatures(object = pbmc))
+
+pbmc <- RunUMAP(pbmc, dims = 1:10)
+saveRDS(pbmc, file = "hc51.rds")
+
+a<-"hc_52_02.csv"
+a1<-data.frame(fread(a),check.names=FALSE, row.names=1)
+pbmc<- CreateSeuratObject(counts = a1, project = "h2", min.cells = 3, min.features = 200)
+pbmc
+pbmc[["percent.mt"]] <- PercentageFeatureSet(pbmc, pattern = "^MT-")
+pbmc <- subset(pbmc, subset = nFeature_RNA > 200 & nFeature_RNA < 2500 & percent.mt < 5)
+pbmc <- NormalizeData(pbmc, normalization.method = "LogNormalize", scale.factor = 10000)
+pbmc <- FindVariableFeatures(pbmc, selection.method = "vst", nfeatures = 2000)
+all.genes <- rownames(pbmc)
+pbmc <- ScaleData(pbmc, features = all.genes)
+pbmc <- RunPCA(pbmc, features = VariableFeatures(object = pbmc))
+pbmc <- RunUMAP(pbmc, dims = 1:10)
+saveRDS(pbmc, file = "hc52.rds")
+
+a<-"hc_100_02.csv"
+a1<-data.frame(fread(a),check.names=FALSE, row.names=1)
+pbmc<- CreateSeuratObject(counts = a1, project = "h3", min.cells = 3, min.features = 200)
+pbmc
+pbmc[["percent.mt"]] <- PercentageFeatureSet(pbmc, pattern = "^MT-")
+pbmc <- subset(pbmc, subset = nFeature_RNA > 200 & nFeature_RNA < 2500 & percent.mt < 5)
+pbmc <- NormalizeData(pbmc, normalization.method = "LogNormalize", scale.factor = 10000)
+pbmc <- FindVariableFeatures(pbmc, selection.method = "vst", nfeatures = 2000)
+all.genes <- rownames(pbmc)
+pbmc <- ScaleData(pbmc, features = all.genes)
+pbmc <- RunPCA(pbmc, features = VariableFeatures(object = pbmc))
+pbmc <- RunUMAP(pbmc, dims = 1:10)
+saveRDS(pbmc, file = "hc100.rds")
+
+a<-"mild_141_02.csv"
+a1<-data.frame(fread(a),check.names=FALSE, row.names=1)
+pbmc<- CreateSeuratObject(counts = a1, project = "m1", min.cells = 3, min.features = 200)
+pbmc
+pbmc[["percent.mt"]] <- PercentageFeatureSet(pbmc, pattern = "^MT-")
+pbmc <- subset(pbmc, subset = nFeature_RNA > 200 & nFeature_RNA < 2500 & percent.mt < 5)
+pbmc <- NormalizeData(pbmc, normalization.method = "LogNormalize", scale.factor = 10000)
+pbmc <- FindVariableFeatures(pbmc, selection.method = "vst", nfeatures = 2000)
+all.genes <- rownames(pbmc)
+pbmc <- ScaleData(pbmc, features = all.genes)
+pbmc <- RunPCA(pbmc, features = VariableFeatures(object = pbmc))
+pbmc <- RunUMAP(pbmc, dims = 1:10)
+saveRDS(pbmc, file = "mild141.rds")
+
+
+a<-"mild_142_02.csv"
+a1<-data.frame(fread(a),check.names=FALSE, row.names=1)
+pbmc<- CreateSeuratObject(counts = a1, project = "m2", min.cells = 3, min.features = 200)
+pbmc
+pbmc[["percent.mt"]] <- PercentageFeatureSet(pbmc, pattern = "^MT-")
+pbmc <- subset(pbmc, subset = nFeature_RNA > 200 & nFeature_RNA < 2500 & percent.mt < 5)
+pbmc <- NormalizeData(pbmc, normalization.method = "LogNormalize", scale.factor = 10000)
+pbmc <- FindVariableFeatures(pbmc, selection.method = "vst", nfeatures = 2000)
+all.genes <- rownames(pbmc)
+pbmc <- ScaleData(pbmc, features = all.genes)
+pbmc <- RunPCA(pbmc, features = VariableFeatures(object = pbmc))
+pbmc <- RunUMAP(pbmc, dims = 1:10)
+saveRDS(pbmc, file = "mild142.rds")
+
+a<-"mild_144_02.csv"
+a1<-data.frame(fread(a),check.names=FALSE, row.names=1)
+pbmc<- CreateSeuratObject(counts = a1, project = "m3", min.cells = 3, min.features = 200)
+pbmc
+pbmc[["percent.mt"]] <- PercentageFeatureSet(pbmc, pattern = "^MT-")
+pbmc <- subset(pbmc, subset = nFeature_RNA > 200 & nFeature_RNA < 2500 & percent.mt < 5)
+pbmc <- NormalizeData(pbmc, normalization.method = "LogNormalize", scale.factor = 10000)
+pbmc <- FindVariableFeatures(pbmc, selection.method = "vst", nfeatures = 2000)
+all.genes <- rownames(pbmc)
+pbmc <- ScaleData(pbmc, features = all.genes)
+pbmc <- RunPCA(pbmc, features = VariableFeatures(object = pbmc))
+pbmc <- RunUMAP(pbmc, dims = 1:10)
+saveRDS(pbmc, file = "mild144.rds")
+
+a<-"severe_143_02.csv"
+a1<-data.frame(fread(a),check.names=FALSE, row.names=1)
+pbmc<- CreateSeuratObject(counts = a1, project = "s1", min.cells = 3, min.features = 200)
+pbmc
+pbmc[["percent.mt"]] <- PercentageFeatureSet(pbmc, pattern = "^MT-")
+pbmc <- subset(pbmc, subset = nFeature_RNA > 200 & nFeature_RNA < 2500 & percent.mt < 5)
+pbmc <- NormalizeData(pbmc, normalization.method = "LogNormalize", scale.factor = 10000)
+pbmc <- FindVariableFeatures(pbmc, selection.method = "vst", nfeatures = 2000)
+all.genes <- rownames(pbmc)
+pbmc <- ScaleData(pbmc, features = all.genes)
+pbmc <- RunPCA(pbmc, features = VariableFeatures(object = pbmc))
+pbmc <- RunUMAP(pbmc, dims = 1:10)
+saveRDS(pbmc, file = "severe143.rds")
+
+a<-"severe_145_02.csv"
+a1<-data.frame(fread(a),check.names=FALSE, row.names=1)
+pbmc<- CreateSeuratObject(counts = a1, project = "s2", min.cells = 3, min.features = 200)
+pbmc
+pbmc[["percent.mt"]] <- PercentageFeatureSet(pbmc, pattern = "^MT-")
+pbmc <- subset(pbmc, subset = nFeature_RNA > 200 & nFeature_RNA < 2500 & percent.mt < 5)
+pbmc <- NormalizeData(pbmc, normalization.method = "LogNormalize", scale.factor = 10000)
+pbmc <- FindVariableFeatures(pbmc, selection.method = "vst", nfeatures = 2000)
+all.genes <- rownames(pbmc)
+pbmc <- ScaleData(pbmc, features = all.genes)
+pbmc <- RunPCA(pbmc, features = VariableFeatures(object = pbmc))
+pbmc <- RunUMAP(pbmc, dims = 1:10)
+saveRDS(pbmc, file = "severe145.rds")
+
+a<-"severe_146_02.csv"
+a1<-data.frame(fread(a),check.names=FALSE, row.names=1)
+pbmc<- CreateSeuratObject(counts = a1, project = "s3", min.cells = 3, min.features = 200)
+pbmc
+pbmc[["percent.mt"]] <- PercentageFeatureSet(pbmc, pattern = "^MT-")
+pbmc <- subset(pbmc, subset = nFeature_RNA > 200 & nFeature_RNA < 2500 & percent.mt < 5)
+pbmc <- NormalizeData(pbmc, normalization.method = "LogNormalize", scale.factor = 10000)
+pbmc <- FindVariableFeatures(pbmc, selection.method = "vst", nfeatures = 2000)
+all.genes <- rownames(pbmc)
+pbmc <- ScaleData(pbmc, features = all.genes)
+pbmc <- RunPCA(pbmc, features = VariableFeatures(object = pbmc))
+pbmc <- RunUMAP(pbmc, dims = 1:10)
+saveRDS(pbmc, file = "severe146.rds")
+
+a<-"severe_148_02.csv"
+a1<-data.frame(fread(a),check.names=FALSE, row.names=1)
+pbmc<- CreateSeuratObject(counts = a1, project = "s4", min.cells = 3, min.features = 200)
+pbmc
+pbmc[["percent.mt"]] <- PercentageFeatureSet(pbmc, pattern = "^MT-")
+pbmc <- subset(pbmc, subset = nFeature_RNA > 200 & nFeature_RNA < 2500 & percent.mt < 5)
+pbmc <- NormalizeData(pbmc, normalization.method = "LogNormalize", scale.factor = 10000)
+pbmc <- FindVariableFeatures(pbmc, selection.method = "vst", nfeatures = 2000)
+all.genes <- rownames(pbmc)
+pbmc <- ScaleData(pbmc, features = all.genes)
+pbmc <- RunPCA(pbmc, features = VariableFeatures(object = pbmc))
+pbmc <- RunUMAP(pbmc, dims = 1:10)
+saveRDS(pbmc, file = "severe148.rds")
+
+a<-"severe_149_02.csv"
+a1<-data.frame(fread(a),check.names=FALSE, row.names=1)
+pbmc<- CreateSeuratObject(counts = a1, project = "s5", min.cells = 3, min.features = 200)
+pbmc
+pbmc[["percent.mt"]] <- PercentageFeatureSet(pbmc, pattern = "^MT-")
+pbmc <- subset(pbmc, subset = nFeature_RNA > 200 & nFeature_RNA < 2500 & percent.mt < 5)
+pbmc <- NormalizeData(pbmc, normalization.method = "LogNormalize", scale.factor = 10000)
+pbmc <- FindVariableFeatures(pbmc, selection.method = "vst", nfeatures = 2000)
+all.genes <- rownames(pbmc)
+pbmc <- ScaleData(pbmc, features = all.genes)
+pbmc <- RunPCA(pbmc, features = VariableFeatures(object = pbmc))
+pbmc <- RunUMAP(pbmc, dims = 1:10)
+saveRDS(pbmc, file = "severe149.rds")
+
+a<-"severe_152_02.csv"
+a1<-data.frame(fread(a),check.names=FALSE, row.names=1)
+pbmc<- CreateSeuratObject(counts = a1, project = "s6", min.cells = 3, min.features = 200)
+pbmc
+pbmc[["percent.mt"]] <- PercentageFeatureSet(pbmc, pattern = "^MT-")
+pbmc <- subset(pbmc, subset = nFeature_RNA > 200 & nFeature_RNA < 2500 & percent.mt < 5)
+pbmc <- NormalizeData(pbmc, normalization.method = "LogNormalize", scale.factor = 10000)
+pbmc <- FindVariableFeatures(pbmc, selection.method = "vst", nfeatures = 2000)
+all.genes <- rownames(pbmc)
+pbmc <- ScaleData(pbmc, features = all.genes)
+pbmc <- RunPCA(pbmc, features = VariableFeatures(object = pbmc))
+pbmc <- RunUMAP(pbmc, dims = 1:10)
+saveRDS(pbmc, file = "severe152.rds")
+#input readRDS
+hc51<-readRDS(file="hc51.rds")
+hc52<-readRDS(file="hc52.rds")
+hc100<-readRDS(file="hc100.rds")
+mild141<-readRDS(file="mild141.rds")
+mild142<-readRDS(file="mild142.rds")
+mild144<-readRDS(file="mild144.rds")
+severe143<-readRDS(file="severe143.rds")
+severe145<-readRDS(file="severe145.rds")
+severe146<-readRDS(file="severe146.rds")
+severe148<-readRDS(file="severe148.rds")
+severe149<-readRDS(file="severe149.rds")
+severe152<-readRDS(file="severe152.rds")
+#setup tech and celltype
+hc51<-RenameCells(hc51,add.cell.id="hc51",for.merge=T)
+hc51@meta.data$tech<-"healthy_control"
+hc51@meta.data$celltype<-"healthy_control_51"
+
+hc52<-RenameCells(hc52,add.cell.id="hc52",for.merge=T)
+hc52@meta.data$tech<-"healthy_control"
+hc52@meta.data$celltype<-"healthy_control_52"
+
+hc100<-RenameCells(hc100,add.cell.id="hc100",for.merge=T)
+hc100@meta.data$tech<-"healthy_control"
+hc100@meta.data$celltype<-"healthy_control_100"
+
+mild141<-RenameCells(mild141,add.cell.id="mild141",for.merge=T)
+mild141@meta.data$tech<-"mild"
+mild141@meta.data$celltype<-"mild_141"
+
+mild142<-RenameCells(mild142,add.cell.id="mild142",for.merge=T)
+mild142@meta.data$tech<-"mild"
+mild142@meta.data$celltype<-"mild_142"
+
+mild144<-RenameCells(mild144,add.cell.id="mild144",for.merge=T)
+mild144@meta.data$tech<-"mild"
+mild144@meta.data$celltype<-"mild_144"
+
+severe143<-RenameCells(severe143,add.cell.id="severe143",for.merge=T)
+severe143@meta.data$tech<-"severe"
+severe143@meta.data$celltype<-"severe_143"
+
+severe145<-RenameCells(severe145,add.cell.id="severe145",for.merge=T)
+severe145@meta.data$tech<-"severe"
+severe145@meta.data$celltype<-"severe_145"
+
+severe146<-RenameCells(severe146,add.cell.id="severe146",for.merge=T)
+severe146@meta.data$tech<-"severe"
+severe146@meta.data$celltype<-"severe_146"
+
+severe148<-RenameCells(severe148,add.cell.id="severe148",for.merge=T)
+severe148@meta.data$tech<-"severe"
+severe148@meta.data$celltype<-"severe_148"
+
+severe149<-RenameCells(severe149,add.cell.id="severe149",for.merge=T)
+severe149@meta.data$tech<-"severe"
+severe149@meta.data$celltype<-"severe_149"
+
+severe152<-RenameCells(severe152,add.cell.id="severe152",for.merge=T)
+severe152@meta.data$tech<-"severe"
+severe152@meta.data$celltype<-"severe_152" 
+#merge
+h1_2<-merge(hc51,hc52)
+h123<-merge(h1_2,hc100)
+m1_2<-merge(mild141,mild142)
+m123<-merge(m1_2,mild144)
+s1_2<-merge(severe143,severe145)
+s123<-merge(s1_2,severe146)
+s4_5<-merge(severe148,severe149)
+s456<-merge(s4_5,severe152)
+s123456<-merge(s123,s456)
+hm<-merge(h123,m123)
+hms<-merge(hm,s123456)
+saveRDS(hms, file="hms_before_integrate.rds")
+#before integrate
+hms[["percent.mt"]] <- PercentageFeatureSet(hms, pattern = "^Mt-")
+VlnPlot(hms, features = c("nFeature_RNA", "nCount_RNA", "percent.mt"), ncol = 3,pt.size = 0)
+pancreas <- NormalizeData(object = hms, normalization.method = "LogNormalize", scale.factor = 1e4)
+pancreas <- FindVariableFeatures(pancreas, selection.method = "vst", nfeatures = 2000, verbose = FALSE)
+pancreas <- ScaleData(pancreas, verbose = FALSE)
+pancreas <- RunPCA(pancreas, npcs = 30, verbose = FALSE)
+pancreas <- RunUMAP(pancreas, reduction = "pca", dims = 1:30)
+p1 <- DimPlot(pancreas, reduction = "umap", group.by = "tech")
+p2 <- DimPlot(pancreas, reduction = "umap", group.by = "celltype", label = TRUE, repel = TRUE) + 
+  NoLegend()
+plot_grid(p1,p2)
+#integrate
+pancreas.list <- SplitObject(pancreas, split.by = "celltype")
+for (i in 1: length(pancreas.list)) {
+  pancreas.list[[i]] <- NormalizeData(pancreas.list[[i]], verbose = FALSE)
+  pancreas.list[[i]] <- FindVariableFeatures(pancreas.list[[i]], selection.method = "vst", nfeatures = 2000, 
+                                             verbose = FALSE)
+}
+reference.list <- pancreas.list[c("healthy_control_51","healthy_control_52","healthy_control_100","mild_141",
+                                  "mild_142","mild_144", "severe_143", "severe_145", "severe_146", "severe_148",
+                                  "severe_149", "severe_152")]
+pancreas.anchors <- FindIntegrationAnchors(object.list = reference.list, dims = 1:30)
+pancreas.integrated <- IntegrateData(anchorset = pancreas.anchors, dims = 1:30)
+DefaultAssay(pancreas.integrated) <- "integrated"
+pancreas.integrated <- ScaleData(pancreas.integrated, verbose = FALSE)
+pancreas.integrated <- RunPCA(pancreas.integrated, npcs = 30, verbose = FALSE)
+pancreas.integrated <- RunUMAP(pancreas.integrated, reduction = "pca", dims = 1:30)
+p1 <- DimPlot(pancreas.integrated, reduction = "umap", group.by = "tech")
+p2 <- DimPlot(pancreas.integrated, reduction = "umap", group.by = "celltype")
+plot_grid(p1,p2)
+saveRDS(pancreas.integrated, file = "hms_after_integrated.rds")
+
+
+#draw the plot group.by celltype
+hms_individual_integrated<-readRDS(file="hms_individual_integrated_OK.rds")
+p1 <- DimPlot(hms_individual_integrated, reduction = "umap", group.by = "celltype")
+p1
+#find how many 15cluster
+ElbowPlot(hms_individual_integrated)
+hms_neighbor<- FindNeighbors(hms_individual_integrated, dims = 1:10)
+hms_cluster <- FindClusters( hms_neighbor, resolution = 0.5)
+head(Idents(hms_cluster), 5)
+hms_cluster<- RunUMAP(hms_cluster, dims = 1:10)
+DimPlot(hms_cluster, reduction = "umap")
+saveRDS(hms_cluster, file = "hms_cluster_test.rds")
+#name each cluster id
+new.cluster.ids <- c("Macrophage", "Macrophage", "Macrophage", "Macrophage", "Neutrophils", "Macrophage", "Naive_CD4_T", "NK", "Neutrophils", "Dendritic", "T", "T","Basal","Plasma","T") 
+names(new.cluster.ids) <- levels(hms_cluster)
+hms_cluster_id<- RenameIdents(hms_cluster, new.cluster.ids)
+DimPlot(hms_cluster_id, reduction = "umap", label = TRUE, pt.size = 0.5) + NoLegend()
+saveRDS(hms_cluster_id, file = "hms_cluster_id_test.rds")
+
+#hms_cluster_id<-readRDS(file="hms_cluster_id_test.rds")
+Macrophage<-subset(hms_cluster_id, idents=c('Macrophage'))
+DimPlot(Macrophage, reduction = "umap")
+saveRDS(Macrophage, file="Macrophage.rds")
+Neutrophils<-subset(hms_cluster_id, idents=c('Neutrophils'))
+DimPlot(Neutrophils, reduction = "umap")
+saveRDS(Neutrophils, file="Neutrophils.rds")
+Naive_CD4_T<-subset(hms_cluster_id, idents=c('Naive_CD4_T'))
+DimPlot(Naive_CD4_T, reduction = "umap")
+saveRDS(Naive_CD4_T, file="Naive_CD4_T.rds")
+NK<-subset(hms_cluster_id, idents=c('NK'))
+DimPlot(NK, reduction = "umap")
+saveRDS(NK, file="NK.rds")
+Dendritic<-subset(hms_cluster_id, idents=c('Dendritic'))
+DimPlot(Dendritic, reduction = "umap")
+saveRDS(Dendritic, file="Dendritic.rds")
+Basal<-subset(hms_cluster_id, idents=c('Basal'))
+DimPlot(Basal, reduction = "umap")
+saveRDS(Basal, file="Basal.rds")
+T<-subset(hms_cluster_id, idents=c('T'))
+DimPlot(T, reduction = "umap")
+saveRDS(T, file="T.rds")
+Plasma<-subset(hms_cluster_id, idents=c('Plasma'))
+DimPlot(Plasma, reduction = "umap")
+saveRDS(Plasma, file="Plasma.rds")
+
+#input each cluster
+Basal<-readRDS("Basal.rds")
+Dendritic<-readRDS("Dendritic.rds")
+Macrophage<-readRDS("Macrophage.rds")
+Naive_CD4_T<-readRDS("Naive_CD4_T.rds")
+Neutrophils<-readRDS("Neutrophils.rds")
+NK<-readRDS("NK.rds")
+Plasma<-readRDS("Plasma.rds")
+T<-readRDS("T.rds")
+
+DimPlot(Basal, reduction = "umap", split.by = "tech")
+DimPlot(Dendritic, reduction = "umap", split.by = "tech")
+DimPlot(Macrophage, reduction = "umap", split.by = "tech")
+DimPlot(Naive_CD4_T, reduction = "umap", split.by = "tech")
+DimPlot(Neutrophils, reduction = "umap", split.by = "tech")
+DimPlot(NK, reduction = "umap", split.by = "tech")
+DimPlot(Plasma, reduction = "umap", split.by = "tech")
+DimPlot(T, reduction = "umap", split.by = "tech")
+
+markers.to.plot <- c("IL1A", "CXCL2","TNFAIP3","MAFF","PPP1R15A","NFKBIA","PTX3","CXCL3","CCL20","IFIT2","ARRDC3","EREG","ARSE","MSP2K6","DHCR7","UCP2","SLC25A10","VIL1","MCM5","DHCR24","SLC9A3R1","PFN1","TPPP3","DEGS2","RAB26")
+DoHeatmap(subset(Basal,downsample=50000), features = markers.to.plot, size = 5, group.by="tech")
+DoHeatmap(subset(Dendritic,downsample=50000), features = markers.to.plot, size = 5, group.by="tech")
+DoHeatmap(subset(Macrophage,downsample=50000), features = markers.to.plot, size = 5, group.by="tech")
+DoHeatmap(subset(Naive_CD4_T,downsample=50000), features = markers.to.plot, size = 5, group.by="tech")
+DoHeatmap(subset(Neutrophils,downsample=50000), features = markers.to.plot, size = 5, group.by="tech")
+DoHeatmap(subset(NK,downsample=50000), features = markers.to.plot, size = 5, group.by="tech")
+DoHeatmap(subset(Plasma,downsample=50000), features = markers.to.plot, size = 5, group.by="tech")
+DoHeatmap(subset(T,downsample=50000), features = markers.to.plot, size = 5, group.by="tech")
+
+RidgePlot(Basal, features = c("IL1A", "CXCL2","TNFAIP3","MAFF","PPP1R15A","NFKBIA","PTX3","CXCL3","CCL20","IFIT2","EREG","UCP2","DHCR24","TPPP3"),cols = c("green3","cornflowerblue","orangered"), group.by="tech", ncol = 3) + theme(axis.title.y = element_blank())
+RidgePlot(Dendritic, features = c("IL1A", "CXCL2","TNFAIP3","MAFF","PPP1R15A","NFKBIA","PTX3","CXCL3","CCL20","IFIT2","EREG","UCP2","DHCR24","TPPP3"),cols = c("green3","cornflowerblue","orangered"), group.by="tech", ncol = 3) + theme(axis.title.y = element_blank())
+RidgePlot(Macrophage, features = c("IL1A", "CXCL2","TNFAIP3","MAFF","PPP1R15A","NFKBIA","PTX3","CXCL3","CCL20","IFIT2","EREG","UCP2","DHCR24","TPPP3"), cols = c("green3","cornflowerblue","orangered"),group.by="tech", ncol = 3) + theme(axis.title.y = element_blank())
+RidgePlot(Naive_CD4_T, features = c("IL1A", "CXCL2","TNFAIP3","MAFF","PPP1R15A","NFKBIA","PTX3","CXCL3","CCL20","IFIT2","EREG","UCP2","DHCR24","TPPP3"), cols = c("green3","cornflowerblue","orangered"),group.by="tech", ncol = 3) + theme(axis.title.y = element_blank())
+RidgePlot(Neutrophils, features = c("IL1A", "CXCL2","TNFAIP3","MAFF","PPP1R15A","NFKBIA","PTX3","CXCL3","CCL20","IFIT2","EREG","UCP2","DHCR24","TPPP3"), cols = c("green3","cornflowerblue","orangered"),group.by="tech", ncol = 3) + theme(axis.title.y = element_blank())
+RidgePlot(NK, features = c("IL1A", "CXCL2","TNFAIP3","MAFF","PPP1R15A","NFKBIA","PTX3","CXCL3","CCL20","IFIT2","EREG","UCP2","DHCR24","TPPP3"), cols = c("green3","cornflowerblue","orangered"),group.by="tech", ncol = 3) + theme(axis.title.y = element_blank())
+RidgePlot(Plasma, features = c("IL1A", "CXCL2","TNFAIP3","MAFF","PPP1R15A","NFKBIA","PTX3","CXCL3","CCL20","IFIT2","EREG","UCP2","DHCR24","TPPP3"), cols = c("green3","cornflowerblue","orangered"),group.by="tech", ncol = 3) + theme(axis.title.y = element_blank())
+RidgePlot(T, features = c("IL1A", "CXCL2","TNFAIP3","MAFF","PPP1R15A","NFKBIA","PTX3","CXCL3","CCL20","IFIT2","EREG","UCP2","DHCR24","TPPP3"), cols = c("green3","cornflowerblue","orangered"),group.by="tech", ncol = 3) + theme(axis.title.y = element_blank())
+
+```
