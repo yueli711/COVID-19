@@ -23,7 +23,7 @@ trainingLabela <- list(control=list(mock=1:12),cov=13:24)
 genelist_25<-read.csv("signature_gene_list_prior_25yueli.csv")
 
 basedir<-getwd()
-sub_dir <- paste(basedir,paste("cov_15positive", 25, sep=""),sep='/')
+sub_dir <- paste(basedir,paste("cov_positive", 25, sep=""),sep='/')
 dir.create(sub_dir)
 set.seed(1220)
 assign.wrapper(
