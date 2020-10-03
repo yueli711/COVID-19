@@ -39,18 +39,7 @@ dds_norm<-counts(dds,normalized=TRUE)
 head(dds_norm)
 write.csv(dds_norm,"gse147507_norm.csv")
 
-#remove batch effect_24celllines
-cdata <- read.table("gse147507_from40_5_6_7_16_norm.txt", header = T,  row.names = 1)
-cdata_0<-cdata[apply(cdata==0,1,sum)!=ncol(cdata),]
-dim(cdata_0)
-cdata_0 <- as.matrix(cdata_0)
-csif <- read.table("pheno_gse147507_5_6_7_16.txt", header = T, row.names = 1)
-modcombat = model.matrix(~1, data = csif)
-batch = csif$batch
-combat_edata = ComBat(dat=cdata_0, batch=batch, mod=modcombat, par.prior=TRUE, prior.plots=F)
-write.table(combat_edata, "ComBat_data(all)(counts).txt_24", sep = "\t", quote = F)
-
-#volcano plot
+#differentially expressed gene_generate
 cts<-read.table("gse147507_from40_5_6_7_16_norm.txt",head=TRUE)
 countData<-round(cts)
 condition <- factor(c(rep("mock",12),rep("CoV",12)), levels = c("mock","CoV"))
