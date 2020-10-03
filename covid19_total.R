@@ -37,17 +37,8 @@ bat <-
   as.data.frame(cbind(
     colnames(cell24_4_filt),
     c(
-      rep(1, 3),
-      rep(2, 3),
-      rep(3, 3),
-      rep(4, 3),
-      rep(5, 2),
-      rep(1, 3),
-      rep(2, 3),
-      rep(3, 3),
-      rep(4, 3),
-      rep(5, 2)
-    ),
+      rep(1, 3),rep(2, 3),rep(3, 3),rep(4, 3),rep(5, 2),rep(1, 3),
+      rep(2, 3), rep(3, 3), rep(4, 3), rep(5, 2)),
     c(rep(1, 14), rep(2, 14))
   ))
 
