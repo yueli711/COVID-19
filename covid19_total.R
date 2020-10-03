@@ -39,8 +39,8 @@ dds_norm<-counts(dds,normalized=TRUE)
 head(dds_norm)
 write.csv(dds_norm,"gse147507_norm.csv")
 
-#differentially expressed gene_generate
-cts<-read.table("gse147507_from40_5_6_7_16_norm.txt",head=TRUE)
+#differentially expressed gene
+cts<-read.table("t",head=TRUE)
 countData<-round(cts)
 condition <- factor(c(rep("mock",12),rep("CoV",12)), levels = c("mock","CoV"))
 #coldata<-data.frame(row.names=colnames(countData),condition)
