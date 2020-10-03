@@ -30,6 +30,9 @@ All the datasets are deposited in [covid19_inputdata](https://drive.google.com/d
 9. ASSIGN
 10. sva
 11. stringr
+12. DESeq2
+13. DESeq
+14. pamr
 
 
 # Explain all the R files:
