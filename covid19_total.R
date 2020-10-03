@@ -294,8 +294,78 @@ assign.wrapper(
   iter = 2000,
   burn_in = 1000)
 
+#bar code
+setwd("/home/li/covid19/result01/total/cov25")
+Series15<-read.csv("pathway_activity_testset.csv",header=TRUE)
+Series15_cov<-Series15[,2]
+
+setwd("/home/li/covid19/result01/total/cov_negative25")
+Series2<-read.csv("pathway_activity_testset.csv",header=TRUE)
+Series2_V1<-Series2[,2]
+
+setwd("/home/li/covid19/result01/total/cov_BALF25")
+BALF<-read.csv("pathway_activity_testset.csv",header=TRUE)
+BALF_V1<-BALF[,2]
+
+setwd("/home/li/covid19/result01/total/cov_PBMC25")
+PBMC<-read.csv("pathway_activity_testset.csv",header=TRUE)
+PBMC_V1<-PBMC[,2]
+
+Name<-t(c("Series15_HealthyLungBiopsy_2","Series15_HealthyLungBiopsy_1","Series15_COVID19Lung_2","Series15_COVID19Lung_1",
+            "Series2_A549_Mock_1","Series2_A549_Mock_2","Series2_A549_Mock_3","Series2_A549_SARS.CoV.2_1", 
+            "Series2_A549_SARS.CoV.2_2","Series2_A549_SARS.CoV.2_3",
+            "SRR10571724","SRR10571730","SRR10571732","CRR119894","CRR119895","CRR119896",
+            "CRR119897","CRR119890","CRR125445","CRR125446","CRR119891","CRR119892","CRR119893"))
+
+Activity<-c(Series15_cov, Series2_V1, BALF_V1,PBMC_V1)
+
+
+Description<-t(c("Control","Control", "SARS-CoV2 Infected","SARS-CoV2 Infected","Mock","Mock","Mock","SARS-CoV2 Infected","SARS-CoV2 Infected",
+            "SARS-CoV2 Infected", "Healthy", "Healthy", "Healthy", "SARS-CoV2 Infected","SARS-CoV2 Infected","SARS-CoV2 Infected","SARS-CoV2 Infected",
+            "Healthy", "Healthy", "Healthy", "SARS-CoV2 Infected","SARS-CoV2 Infected","SARS-CoV2 Infected"))
+            
+
+Sample<-t(c("Lung Biopsy", "Lung Biopsy","Lung Biopsy","Lung Biopsy","A549","A549", "A549", "A549", "A549", "A549","BALF/PBMC", "BALF/PBMC", "BALF/PBMC", "BALF/PBMC", "BALF/PBMC", "BALF/PBMC","BALF/PBMC",
+                         "BALF/PBMC","BALF/PBMC","BALF/PBMC","BALF/PBMC","BALF/PBMC","BALF/PBMC"))
+
+Point<-t(c("Lung_Biopsy/A549","Lung_Biopsy/A549","Lung_Biopsy/A549","Lung_Biopsy/A549","Lung_Biopsy/A549","Lung_Biopsy/A549",
+                   "Lung_Biopsy/A549", "Lung_Biopsy/A549", "Lung_Biopsy/A549","Lung_Biopsy/A549","BALF","BALF","BALF","BALF","BALF","BALF","BALF",
+                   "PBMC", "PBMC", "PBMC", "PBMC", "PBMC", "PBMC"))
+
+DATA01<-t(rbind(Name,Activity,Description,Sample,Point))
+
+cnames=c("Name","Activity","Description","Sample","Point")
+
+colnames(DATA01)=cnames
+
+write.csv(DATA01,"DATA01.csv")
+
+DATA01<-read.csv("DATA01.csv", header = TRUE)
+
+
+###Barplots
+DATA<- data.frame(DATA01, check.names=F)
+#DATA$Sample<- factor(DATA$Sample, levels= c( "Lung Biopsy","A549","BALF/PMBC"))
+#DATA$Point<- factor(DATA$Point, levels= c("Lung Biopsy/A549", "BALF", "PMBC"))
+
+DATA_Graph1<- DATA %>% ggplot(aes(x= Description, y= Activity)) + stat_summary(geom= 'bar', fun= 'mean', fill= 'grey60') + geom_point(position= "jitter", aes(shape= Point), size= 4) +
+  facet_wrap(~Sample, scales= "free_x") + theme_classic()+ ylim(NA,1)+ labs(y= "SARS-CoV2 infection activity", x= element_blank())+
+  theme_minimal() + theme(axis.title= element_text(face= "bold", size= 16), axis.text= element_text(face= "bold", size= 12), strip.text.x= element_text(size= 16, face= "bold.italic") ,plot.background = element_blank(), panel.grid.major = element_blank(), panel.grid.minor = element_blank())
+  
+
+DATA_Graph2<- DATA %>% ggplot(aes(x= Description, y= Activity)) + stat_summary(geom= 'bar', fun= 'mean', fill= 'grey60') + geom_point(position= "jitter", aes(shape= Point), size= 4) +
+  facet_wrap(~Sample, scales= "free_x") + theme_classic()+ ylim(NA,1)+ labs(y= "SARS-CoV2 infection activity",x= element_blank())+
+  theme(axis.title= element_text(face= "bold", size= 16), axis.text= element_text(face= "bold", size= 12), strip.text.x= element_text(size= 16, face= "bold.italic") ,plot.background = element_blank(), panel.grid.major = element_blank(), panel.grid.minor = element_blank())
+
+DATA_Graph1
+                       
+DATA_Graph2
+
+
 #single_cell_integrate
 #input, CreateSeuratObject, filter, save
+setwd("/home/li/covid19/result01/total")
+
 a<-"hc_51_02.csv"
 a1<-data.frame(fread(a),check.names=FALSE, row.names=1)
 pbmc<- CreateSeuratObject(counts = a1, project = "h1", min.cells = 3, min.features = 200)
