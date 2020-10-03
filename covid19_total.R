@@ -39,18 +39,6 @@ dds_norm<-counts(dds,normalized=TRUE)
 head(dds_norm)
 write.csv(dds_norm,"gse147507_norm.csv")
 
-#remove batch effect_36celllines
-library(sva) #blog.sina.com.cn/s/blog_70a5f5210102wibx.html
-cdata<-read.csv("gse147507_norm_36celllines.csv", header = T,  row.names = 1)
-cdata_0<-cdata[apply(cdata==0,1,sum)!=ncol(cdata),]
-dim(cdata_0)
-cdata_0 <- as.matrix(cdata_0)
-csif <- read.table("pheno_gse147507_1_2_5_6_7_16.txt", header = T, row.names = 1)
-modcombat = model.matrix(~1, data = csif)
-batch = csif$batch
-combat_edata = ComBat(dat=cdata_0, batch=batch, mod=modcombat, par.prior=TRUE, prior.plots=F)
-write.table(combat_edata, "ComBat_data(all)(counts).txt_36", sep = "\t", quote = F)
-
 #remove batch effect_24celllines
 cdata <- read.table("gse147507_from40_5_6_7_16_norm.txt", header = T,  row.names = 1)
 cdata_0<-cdata[apply(cdata==0,1,sum)!=ncol(cdata),]
