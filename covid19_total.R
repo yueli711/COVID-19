@@ -389,8 +389,8 @@ DATA01<-read.csv("DATA01.csv", header = TRUE)
 
 ###Barplots
 DATA<- data.frame(DATA01, check.names=F)
-#DATA$Sample<- factor(DATA$Sample, levels= c( "Lung Biopsy","A549","BALF/PMBC"))
-#DATA$Point<- factor(DATA$Point, levels= c("Lung Biopsy/A549", "BALF", "PMBC"))
+#DATA$Sample<- factor(DATA$Sample, levels= c( "Lung Biopsy","A549","BALF/PBMC"))
+#DATA$Point<- factor(DATA$Point, levels= c("Lung Biopsy/A549", "BALF", "PBMC"))
 
 DATA_Graph1<- DATA %>% ggplot(aes(x= Description, y= Activity)) + stat_summary(geom= 'bar', fun= 'mean', fill= 'grey60') + geom_point(position= "jitter", aes(shape= Point), size= 4) +
   facet_wrap(~Sample, scales= "free_x") + theme_classic()+ ylim(NA,1)+ labs(y= "SARS-CoV2 infection activity", x= element_blank())+
