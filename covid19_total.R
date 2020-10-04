@@ -340,43 +340,11 @@ assign.wrapper(
   iter = 2000,
   burn_in = 1000)
 
-#bar code
-setwd("/home/li/covid19/result01/total/cov25")
-Series15<-read.csv("pathway_activity_testset.csv",header=TRUE)
-Series15_cov<-Series15[,2]
-
-setwd("/home/li/covid19/result01/total/cov_negative25")
-Series2<-read.csv("pathway_activity_testset.csv",header=TRUE)
-Series2_V1<-Series2[,2]
-
-setwd("/home/li/covid19/result01/total/cov_BALF25")
-BALF<-read.csv("pathway_activity_testset.csv",header=TRUE)
-BALF_V1<-BALF[,2]
-
-setwd("/home/li/covid19/result01/total/cov_PBMC25")
-PBMC<-read.csv("pathway_activity_testset.csv",header=TRUE)
-PBMC_V1<-PBMC[,2]
-
-Name<-t(c("Series15_HealthyLungBiopsy_2","Series15_HealthyLungBiopsy_1","Series15_COVID19Lung_2","Series15_COVID19Lung_1",
-            "Series2_A549_Mock_1","Series2_A549_Mock_2","Series2_A549_Mock_3","Series2_A549_SARS.CoV.2_1", 
-            "Series2_A549_SARS.CoV.2_2","Series2_A549_SARS.CoV.2_3",
-            "SRR10571724","SRR10571730","SRR10571732","CRR119894","CRR119895","CRR119896",
-            "CRR119897","CRR119890","CRR125445","CRR125446","CRR119891","CRR119892","CRR119893"))
-
-Activity<-c(Series15_cov, Series2_V1, BALF_V1,PBMC_V1)
 
 
-Description<-t(c("Control","Control", "SARS-CoV2 Infected","SARS-CoV2 Infected","Mock","Mock","Mock","SARS-CoV2 Infected","SARS-CoV2 Infected",
-            "SARS-CoV2 Infected", "Healthy", "Healthy", "Healthy", "SARS-CoV2 Infected","SARS-CoV2 Infected","SARS-CoV2 Infected","SARS-CoV2 Infected",
-            "Healthy", "Healthy", "Healthy", "SARS-CoV2 Infected","SARS-CoV2 Infected","SARS-CoV2 Infected"))
-            
 
-Sample<-t(c("Lung Biopsy", "Lung Biopsy","Lung Biopsy","Lung Biopsy","A549","A549", "A549", "A549", "A549", "A549","BALF/PBMC", "BALF/PBMC", "BALF/PBMC", "BALF/PBMC", "BALF/PBMC", "BALF/PBMC","BALF/PBMC",
-                         "BALF/PBMC","BALF/PBMC","BALF/PBMC","BALF/PBMC","BALF/PBMC","BALF/PBMC"))
 
-Point<-t(c("Lung_Biopsy/A549","Lung_Biopsy/A549","Lung_Biopsy/A549","Lung_Biopsy/A549","Lung_Biopsy/A549","Lung_Biopsy/A549",
-                   "Lung_Biopsy/A549", "Lung_Biopsy/A549", "Lung_Biopsy/A549","Lung_Biopsy/A549","BALF","BALF","BALF","BALF","BALF","BALF","BALF",
-                   "PBMC", "PBMC", "PBMC", "PBMC", "PBMC", "PBMC"))
+
 
 DATA01<-t(rbind(Name,Activity,Description,Sample,Point))
 
