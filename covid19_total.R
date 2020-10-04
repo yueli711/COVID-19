@@ -340,13 +340,7 @@ assign.wrapper(
   iter = 2000,
   burn_in = 1000)
 
-
-
-
-
-
-#single_cell_integrate
-#input, CreateSeuratObject, filter, save
+#single_cell_integrate, input, CreateSeuratObject, filter, save
 setwd("/home/li/covid19/result01/total")
 
 a<-"hc_51_02.csv"
