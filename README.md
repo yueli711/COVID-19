@@ -35,6 +35,7 @@ All the datasets are deposited in [covid19_inputdata](https://drive.google.com/d
 14. DESeq
 15. pamr
 16. readxl
+17. ggpubr
 
 
 # Explain all the R files:
