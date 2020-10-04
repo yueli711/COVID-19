@@ -1,6 +1,6 @@
-# COVID-19
+# SARS-CoV-2 Signature
 
-This repository presents all analyses done for the paper "SARS-CoV-2 Early Infection Signature Identified Potential Key Infection Mechanisms and Drug Targets“。 Each folder contains the codes for each of the figure shown in the paper.
+This repository presents all analyses done for the paper "SARS-CoV-2 Early Infection Signature Identified Potential Key Infection Mechanisms and Drug Targets." Each folder contains the codes for each of the figure shown in the paper.
 
 
 # Datasets
@@ -21,18 +21,20 @@ All the datasets are deposited in [covid19_inputdata](https://drive.google.com/d
 
 1. Seurat
 2. ggplots
-3. cowplot
-4. scater
-5. scran
-6. BioParallel
-7. BiocNeighbors
-8. data.table
-9. ASSIGN
-10. sva
-11. stringr
-12. DESeq2
-13. DESeq
-14. pamr
+3. ggplot2
+4. cowplot
+5. scater
+6. scran
+7. BioParallel
+8. BiocNeighbors
+9. data.table
+10. ASSIGN
+11. sva
+12. stringr
+13. DESeq2
+14. DESeq
+15. pamr
+16. readxl
 
 
 # Explain all the R files:
