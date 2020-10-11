@@ -1,6 +1,6 @@
 # SARS-CoV-2 Signature
 
-This repository presents all analyses done for the paper "SARS-CoV-2 Early Infection Signature Identified Potential Key Infection Mechanisms and Drug Targets." Each folder contains the codes for each of the figure shown in the paper.
+This repository includes code for processing data and the analyses done for the paper "SARS-CoV-2 Early Infection Signature Identified Potential Key Infection Mechanisms and Drug Targets." `covid19_total.Rmd` script has code for the results described in the paper.
 
 
 # Datasets
