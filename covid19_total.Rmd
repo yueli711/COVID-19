@@ -387,10 +387,14 @@ fig3a<-ggplot(strong_cov2_class_filt, aes(x=Description, y=Score, fill=Descripti
   geom_boxplot()+geom_jitter(shape=16, position=position_jitter(0.2))+
   labs(y= "CS",x= element_blank())+ylim(-100,-90)+
   theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1))
+  
+  
 fig3b<-ggplot(cov2[cov2$Name%in%drugs,],aes(x =Name, y=Score, fill=Description))+
   geom_bar(stat="identity", position=position_dodge())+
   labs(y= "CS",x= element_blank())+
   theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1))
+  
+  
 ggarrange(fig3a,fig3b,nrow = 2,heights = c(1.5,1),labels = c("a","b"))
 ```
 #single_cell_integrate
