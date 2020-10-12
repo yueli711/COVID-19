@@ -327,8 +327,7 @@ DATA_Graph2+geom_text(data=ann_text, label=ann_text$lab, fontface="bold")
 
 
 ```{r}
-#single_cell_integrate
-#input, CreateSeuratObject, filter, save
+#single_cell_integrate input, CreateSeuratObject, filter, save
 a<-"hc_51_02.csv"
 a1<-data.frame(fread(a),check.names=FALSE, row.names=1)
 pbmc<- CreateSeuratObject(counts = a1, project = "h1", min.cells = 3, min.features = 200)
