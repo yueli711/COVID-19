@@ -3,6 +3,12 @@
 This repository includes code for processing data and the analyses done for the paper "SARS-CoV-2 Early Infection Signature Identified Potential Key Infection Mechanisms and Drug Targets." `covid19_total.Rmd` script has code for the results described in the paper.
 
 
+# What is this repository for?
+
+We used the 'DESeq2' R package to normalization the reads count and find out the differetially expressed genes.
+
+
+
 # Datasets
 
 You will need the following datasets for running all the codes:
