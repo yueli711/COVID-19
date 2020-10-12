@@ -330,27 +330,7 @@ DATA_Graph2+geom_text(data=ann_text, label=ann_text$lab, fontface="bold")
 all_classes<-names(table(strong_cov2[,6])[table(strong_cov2[,6])>3])
 all_classes<-all_classes[!all_classes%in%c("-","CD molecules" ,"Mitochondrial respiratory chain complex / Complex I","RNA binding motif (RRM) containing","Zinc fingers, C2H2-type" )]
 all_strong_cov2_class_filt<-droplevels(strong_cov2[strong_cov2$Description%in%all_classes,])
-# ggplot(all_strong_cov2_class_filt, aes(x=Type, y=Score, fill=Description)) + 
-#   geom_boxplot()+geom_jitter(shape=16, position=position_jitter(0.2))+theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1))+
-#   theme_classic()
 
-cov2$Description[cov2$Description=="Angiotensin antagonist"]<-"Angiotensin receptor antagonist"
-cov2$Description[cov2$Description=="HIV protease inhibitor"]<-"Antiviral"
-
-
-fig3a<-ggplot(strong_cov2_class_filt, aes(x=Description, y=Score, fill=Description)) + 
-  geom_boxplot()+geom_jitter(shape=16, position=position_jitter(0.2))+
-  labs(y= "CS",x= element_blank())+ylim(-100,-90)+
-  theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1))
-  
-  
-fig3b<-ggplot(cov2[cov2$Name%in%drugs,],aes(x =Name, y=Score, fill=Description))+
-  geom_bar(stat="identity", position=position_dodge())+
-  labs(y= "CS",x= element_blank())+
-  theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1))
-  
-  
-ggarrange(fig3a,fig3b,nrow = 2,heights = c(1.5,1),labels = c("a","b"))
 
 
 ```
