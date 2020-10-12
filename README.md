@@ -5,7 +5,11 @@ This repository includes code for processing data and the analyses done for the 
 
 # What is this repository for?
 
-We used the 'DESeq2' R package to normalization the reads count and find out the differetially expressed genes.
+1. We used the 'DESeq2' R package to normalization the reads count and find out the differetially expressed genes (DEGs). These DEGs were used in Ingenuity Pathway Analysis.
+2. 'ASSIGN' R package was used to generate a 25-gene signature.
+3. The 25-gene signature was validate in the same database, and in an independent lung sample database from patients, specially, in bronchoalveolar lavage fluid (BALF) cells and peripheral blood mononuclear cells (PMBC). 
+4. A single cell data of GSE145926 was used to confirm the some of the upregulated genes.
+5. 
 
 
 
