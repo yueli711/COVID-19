@@ -7,7 +7,7 @@ purpoe: Performs all analyses and generate mail figures fo the manuscript
 output: html_document
 ---
 
-```{r setup, include=FALSE, echo=FALSE}
+{r setup, include=FALSE, echo=FALSE}
 library(stringr)
 library(sva)
 library(ASSIGN)
@@ -347,6 +347,11 @@ ann_text<-data.frame(Description="Healthy",Activity=0.995,lab="p<0.0001",Sample 
 
 DATA_Graph2+geom_text(data=ann_text, label=ann_text$lab, fontface="bold")
   
+```
+
+
+
+
 
 #single_cell_integrate
 #input, CreateSeuratObject, filter, save
