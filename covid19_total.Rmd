@@ -1,6 +1,6 @@
 ---
 title: "SARS-CoV-2 Early Infection Signature Identified Potential Key Infection Mechanisms and Drug Targets"
-date: 11October2020,
+date: 11 October 2020,
 name: covid19_total.Rmd
 author: Moom R. Roosan, Yue Li
 purpoe: Performs all analyses and generate mail figures fo the manuscript
