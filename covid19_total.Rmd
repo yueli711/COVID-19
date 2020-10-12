@@ -378,8 +378,11 @@ all_strong_cov2_class_filt<-droplevels(strong_cov2[strong_cov2$Description%in%al
 # ggplot(all_strong_cov2_class_filt, aes(x=Type, y=Score, fill=Description)) + 
 #   geom_boxplot()+geom_jitter(shape=16, position=position_jitter(0.2))+theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1))+
 #   theme_classic()
+
 cov2$Description[cov2$Description=="Angiotensin antagonist"]<-"Angiotensin receptor antagonist"
 cov2$Description[cov2$Description=="HIV protease inhibitor"]<-"Antiviral"
+
+
 fig3a<-ggplot(strong_cov2_class_filt, aes(x=Description, y=Score, fill=Description)) + 
   geom_boxplot()+geom_jitter(shape=16, position=position_jitter(0.2))+
   labs(y= "CS",x= element_blank())+ylim(-100,-90)+
