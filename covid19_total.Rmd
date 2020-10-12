@@ -28,7 +28,7 @@ suppressMessages(require(BiocNeighbors))
 
 ## Figure 1a Table 1
 
-```{r Figure 1a,echo=FALSE,cache=TRUE,warning=FALSE}
+```{r Figure 1a Table 1,echo=FALSE,cache=TRUE,warning=FALSE}
 
 #generate 25 gene expression signature
 
@@ -113,7 +113,7 @@ assign.wrapper(
 
 ## Figure 1b
 
-```{r Figure 4,echo=FALSE,cache=TRUE}
+```{r Figure 1b,echo=FALSE,cache=TRUE}
 
 #use series 15 to test positive
 
