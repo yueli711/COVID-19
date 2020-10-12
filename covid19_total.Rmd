@@ -28,6 +28,7 @@ suppressMessages(require(BiocNeighbors))
 ```{r}
 
 #normalization of the reads and find out the differentially expressed genes
+#the differentially expressed genes were used in Ingenuity Pathway Analysis
 
 setwd("~/covid19")
 cts<-read.table("gse147507_counts",head=TRUE)
