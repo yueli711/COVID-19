@@ -23,6 +23,11 @@ suppressMessages(require(BiocParallel))
 suppressMessages(require(BiocNeighbors))
 
 ```
+
+
+```
+#normalization of the reads and find the differentially expressed genes
+setwd("~/covid19")
 cts<-read.table("gse147507_counts",head=TRUE)
 write.csv(cts,"gse147507_counts.csv")
 #setup DESeqDataSetFromMatrix
