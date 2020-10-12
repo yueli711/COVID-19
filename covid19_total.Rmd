@@ -26,7 +26,7 @@ suppressMessages(require(BiocNeighbors))
 
 
 ```{r}
-#normalization of the reads and find the differentially expressed genes
+#normalization of the reads and find out the differentially expressed genes
 setwd("~/covid19")
 cts<-read.table("gse147507_counts",head=TRUE)
 write.csv(cts,"gse147507_counts.csv")
