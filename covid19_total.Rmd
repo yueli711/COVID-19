@@ -113,7 +113,7 @@ assign.wrapper(
 
 ## Figure 1b
 
-```{r Figure 1b,echo=FALSE,cache=TRUE}
+```{r}
 
 #use series 15 to test positive
 
