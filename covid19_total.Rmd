@@ -323,17 +323,10 @@ DATA_Graph2+geom_text(data=ann_text, label=ann_text$lab, fontface="bold")
 
 
 
+##Figure 2
 
 
-
-
-all_classes<-names(table(strong_cov2[,6])[table(strong_cov2[,6])>3])
-all_classes<-all_classes[!all_classes%in%c("-","CD molecules" ,"Mitochondrial respiratory chain complex / Complex I","RNA binding motif (RRM) containing","Zinc fingers, C2H2-type" )]
-all_strong_cov2_class_filt<-droplevels(strong_cov2[strong_cov2$Description%in%all_classes,])
-
-
-
-```
+```{r}
 #single_cell_integrate
 #input, CreateSeuratObject, filter, save
 a<-"hc_51_02.csv"
