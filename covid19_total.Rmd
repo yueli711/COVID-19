@@ -28,7 +28,7 @@ suppressMessages(require(BiocNeighbors))
 
 ## Figure 1a Table 1
 
-```{r Figure 1a Table 1,echo=FALSE,cache=TRUE,warning=FALSE}
+```{r}
 
 #generate 25 gene expression signature
 
