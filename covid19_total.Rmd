@@ -1,11 +1,13 @@
 ---
-title: "covid19_total"
-author: "yueli"
-date: "9/26/2020"
+title: "SARS-CoV-2 Early Infection Signature Identified Potential Key Infection Mechanisms and Drug Targets"
+date: 11October2020,
+name: covid19_total.Rmd
+author: Moom R. Roosan, Yue Li
+purpoe: Performs all analyses and generate mail figures fo the manuscript
 output: html_document
 ---
 
-```{r}
+```{r setup, include=FALSE, echo=FALSE}
 library(stringr)
 library(sva)
 library(ASSIGN)
@@ -19,7 +21,13 @@ suppressMessages(require(scater))
 suppressMessages(require(scran))
 suppressMessages(require(BiocParallel))
 suppressMessages(require(BiocNeighbors))
+
+
+## Figure 1
+
+```{r Figure 1,echo=FALSE,cache=TRUE,warning=FALSE}
 #generate 25 gene expression signature
+
 setwd("/home/li/covid19/result01/total")
 cell24_4<-read.table("24celllines_4patients_norm.txt")# Set working directory
 #write.csv(cell24_4,"cell24_4.csv")
