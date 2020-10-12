@@ -22,13 +22,17 @@ suppressMessages(require(scran))
 suppressMessages(require(BiocParallel))
 suppressMessages(require(BiocNeighbors))
 
+```
 
-## Figure 1
 
-```{r Figure 1,echo=FALSE,cache=TRUE,warning=FALSE}
+
+## Figure 1a
+
+```{r Figure 1a,echo=FALSE,cache=TRUE,warning=FALSE}
+
 #generate 25 gene expression signature
 
-setwd("/home/li/covid19/result01/total")
+setwd("~/covid19")
 cell24_4<-read.table("24celllines_4patients_norm.txt")# Set working directory
 #write.csv(cell24_4,"cell24_4.csv")
 
@@ -102,8 +106,17 @@ assign.wrapper(
   theta1 = 0.9,
   iter = 2000,
   burn_in = 1000)
+   
+```
+
+
+
+## Figure 1b
+
+```{r Figure 4,echo=FALSE,cache=TRUE}
 
 #use series 15 to test positive
+
 cell5_6_7_16_15<-read.table("56716_15positive.txt",header=TRUE)
 write.csv(cell5_6_7_16_15,"cell5_6_7_16_15.csv")
 mock_cov<-read.csv("cell5_6_7_16_15.csv", header = TRUE)
@@ -142,6 +155,7 @@ assign.wrapper(
   burn_in = 1000)
 
 #use series 2 to test negative
+
 cell5_6_7_16_2<-read.table("56716_2negative.txt",header=TRUE)
 write.csv(cell5_6_7_16_2,"cell5_6_7_16_2.csv")
 mock_cov<-read.csv("cell5_6_7_16_2.csv", header = TRUE)
@@ -180,6 +194,7 @@ assign.wrapper(
   burn_in = 1000)
 
 # BALF
+
 cell_5_6_7_16_BALF<-read.table("cell_5_6_7_16_BALF_norm.txt",head=TRUE)
 write.csv(cell_5_6_7_16_BALF,"cell_5_6_7_16_BALF.csv")
 cells_4_BALF<-read.csv("cell_5_6_7_16_BALF.csv",header=TRUE)
@@ -221,7 +236,7 @@ plot(pca)
 which(pca$x[,1]< -50)
 which(pca$x[,2]< -50)
 
-########running assign with the best 25 genes found in the cell line data########
+#running assign with the best 25 genes found in the cell line data
 c_mock<-as.matrix(combat_mock_cov[,c(1:12)])
 c_cov<-as.matrix(combat_mock_cov[,c(16:27)])
 test<-as.matrix(combat_mock_cov[,c(13:15,28:31)])
@@ -246,6 +261,7 @@ assign.wrapper(
   burn_in = 1000)
 
 #PBMC
+
 cell_5_6_7_16_PBMC<-read.table("cell_5_6_7_16_PBMC_norm.txt",head=TRUE)
 write.csv(cell_5_6_7_16_PBMC,"cell_5_6_7_16_PBMC.csv")
 cells_4_PBMC<-read.csv("cell_5_6_7_16_PBMC.csv",header=TRUE)
@@ -286,7 +302,7 @@ which(pca$x[,2]< -50)
 
 plot(hclust(dist(t(combat_mock_cov)),method="complete"))
 
-########running assign with the best 25 genes found in the cell line data########
+#running assign with the best 25 genes found in the cell line data
 #combat_mock_cov<-read.table("combat_cell56716_PBMC.txt",header=TRUE)
 c_mock<-as.matrix(combat_mock_cov[,c(1:12)])
 c_cov<-as.matrix(combat_mock_cov[,c(16:27)])
