@@ -74,6 +74,10 @@ res <- results(dds2, name="condition_CoV_vs_mock")
 res <- results(dds2, contrast=c("condition","CoV","mock"))
 resultsNames(dds2)
 write.csv(res,"gse147507_deg.csv")
+```
+
+
+
 
 
 ## Figure 1a Table 1 Extended Data Fig. 2
