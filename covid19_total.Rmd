@@ -7,7 +7,7 @@ purpoe: Performs all analyses and generate mail figures fo the manuscript
 output: html_document
 ---
 
-{r setup, include=FALSE, echo=FALSE}
+```{r setup, include=FALSE, echo=FALSE}
 library(stringr)
 library(sva)
 library(ASSIGN)
