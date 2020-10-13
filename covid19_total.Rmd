@@ -87,7 +87,7 @@ write.csv(res,"gse147507_deg.csv")
 
 
 
-## Figure 1a Table 1 Extended Data Fig. 2
+## Figure 1a
 
 ```{r}
 
@@ -116,6 +116,7 @@ plot(pca)
 which(pca$x[,1]< -50)
 which(pca$x[,2]< -50)
 
+#Table 1 Extended Data Fig. 2
 c_mock<-as.matrix(combat_cell24_4[,c(1:12)])
 c_cov<-as.matrix(combat_cell24_4[,c(15:26)])
 test<-as.matrix(combat_cell24_4[,c(13:14,27:28)])
