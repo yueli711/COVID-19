@@ -675,6 +675,7 @@ saveRDS(pancreas.integrated, file = "hms_individual_integrated_OK.rds")
 
 
 #draw the plot group.by celltype
+
 hms_individual_integrated<-readRDS(file="hms_individual_integrated_OK.rds")
 p1 <- DimPlot(hms_individual_integrated, reduction = "umap", group.by = "celltype")
 p1
@@ -686,7 +687,9 @@ head(Idents(hms_cluster), 5)
 hms_cluster<- RunUMAP(hms_cluster, dims = 1:10)
 DimPlot(hms_cluster, reduction = "umap")
 saveRDS(hms_cluster, file = "hms_cluster_test.rds")
+
 #name each cluster id
+
 new.cluster.ids <- c("Macrophage", "Macrophage", "Macrophage", "Macrophage", "Neutrophils", "Macrophage", "Naive_CD4_T", "NK", "Neutrophils", "Dendritic", "T", "T","Basal","Plasma","T") 
 names(new.cluster.ids) <- levels(hms_cluster)
 hms_cluster_id<- RenameIdents(hms_cluster, new.cluster.ids)
@@ -694,6 +697,7 @@ DimPlot(hms_cluster_id, reduction = "umap", label = TRUE, pt.size = 0.5) + NoLeg
 saveRDS(hms_cluster_id, file = "hms_cluster_id_test.rds")
 
 #hms_cluster_id<-readRDS(file="hms_cluster_id_test.rds")
+
 Macrophage<-subset(hms_cluster_id, idents=c('Macrophage'))
 DimPlot(Macrophage, reduction = "umap")
 saveRDS(Macrophage, file="Macrophage.rds")
