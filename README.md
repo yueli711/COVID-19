@@ -9,9 +9,13 @@ This repository includes code for processing data and the analyses done for the 
 * We have provided the code and various intermediate data files that we produced in performing the analyses we describe in the manuscript.
 
 
-# Datasets
+# How to normalize raw RNA-Seq data and generate the 25-gene signature
 
-You will need the following datasets for running all the codes:
+This pipeline is designed to be used in R environment.
+
+1. install the R statistical package. We used version 3.6.1.
+
+
 
 All the datasets are deposited in [covid19_inputdata](https://drive.google.com/drive/folders/1mIFiEcPm3o5FEkeBD4v3MaGjM0xazGbx)
 
