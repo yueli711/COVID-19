@@ -13,7 +13,7 @@ This repository includes code for processing data and the analyses done for the 
 
 This pipeline is designed to be used in R environment.
 
-1. install the R statistical package. We used version 3.6.1.
+1. install the [R statistical package]https://www.r-project.org/. We used version 3.6.1.
 
 
 
