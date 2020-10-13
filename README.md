@@ -37,7 +37,7 @@ This pipeline is designed to be used in R environment.
 
 3. Clone this git repository to your computer.
 
-4. Download all the data in [covid19_inputdata](https://drive.google.com/drive/folders/1mIFiEcPm3o5FEkeBD4v3MaGjM0xazGbx), and store them in your covid19 directory.
+4. Download all the data in [covid19_inputdata](https://drive.google.com/drive/folders/1mIFiEcPm3o5FEkeBD4v3MaGjM0xazGbx), and store them in your ```covid19``` directory.
 
 5. 
 
