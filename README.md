@@ -35,9 +35,11 @@ This pipeline is designed to be used in R environment.
 * readxl
 * ggpub
 
+3. Clone this git repository to your computer.
 
+4. Download all the data in [covid19_inputdata](https://drive.google.com/drive/folders/1mIFiEcPm3o5FEkeBD4v3MaGjM0xazGbx), and store them in your covid19 directory.
 
-All the datasets are deposited in [covid19_inputdata](https://drive.google.com/drive/folders/1mIFiEcPm3o5FEkeBD4v3MaGjM0xazGbx)
+5. 
 
 1. Generate Table 1 and Figure 1A, B of 25 gene expression signature: input file is [24celllines_4patients_norm.txt](https://github.com/yueli711/COVID-19/blob/master/Table1_Figure1AB_cell24_4/24celllines_4patients_norm.txt), it will generate [cell24_4.csv](https://github.com/yueli711/COVID-19/blob/master/Table1_Figure1AB_cell24_4/cell24_4.csv) during the process.  
 2. Generate Figure 1C left: input files are [signature_gene_list_prior_25yueli.csv](https://github.com/yueli711/COVID-19/blob/master/Figure1C_left_5_6_7_16_15positive/signature_gene_list_prior_25yueli.csv) and [56716_15positive.txt](https://github.com/yueli711/COVID-19/blob/master/Figure1C_left_5_6_7_16_15positive/56716_15positive.txt), it will generate [cell5_6_7_16_15.csv](https://github.com/yueli711/COVID-19/blob/master/Figure1C_left_5_6_7_16_15positive/cell5_6_7_16_15.csv) during the process.
