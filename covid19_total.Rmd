@@ -117,6 +117,7 @@ which(pca$x[,1]< -50)
 which(pca$x[,2]< -50)
 
 #Table 1 Extended Data Fig. 2
+
 c_mock<-as.matrix(combat_cell24_4[,c(1:12)])
 c_cov<-as.matrix(combat_cell24_4[,c(15:26)])
 test<-as.matrix(combat_cell24_4[,c(13:14,27:28)])
@@ -238,6 +239,7 @@ plot(hclust(dist(t(cells_4_BALF)),method="complete"))##samples are rather cluste
 #Series 15 is furthest from the others and that makes sense since these are from patients rather than cell lines. We should exclude Series 15 from the signature generation dataset.
 
 ##filter all zeroes
+
 cells_4_BALF_filt<-(cells_4_BALF[apply(cells_4_BALF==0,1,mean)<0.1,])
 #precombat PCA
 pca<-prcomp(t(cells_4_BALF_filt))
@@ -261,6 +263,7 @@ write.csv(combat_mock_cov,"combat_cell56716_BALF.csv")
 plot(hclust(dist(t(combat_mock_cov)),method="complete"))
 
 ##PCA post combat
+
 pca<-prcomp(t(combat_mock_cov))
 plot(pca)
 {plot(pca$x[,1],pca$x[,2])
@@ -270,6 +273,7 @@ which(pca$x[,1]< -50)
 which(pca$x[,2]< -50)
 
 #running assign with the best 25 genes found in the cell line data
+
 c_mock<-as.matrix(combat_mock_cov[,c(1:12)])
 c_cov<-as.matrix(combat_mock_cov[,c(16:27)])
 test<-as.matrix(combat_mock_cov[,c(13:15,28:31)])
@@ -305,6 +309,7 @@ plot(hclust(dist(t(cells_4_PBMC)),method="complete"))##samples are rather cluste
 #Series 15 is furthest from the others and that makes sense since these are from patients rather than cell lines. We should exclude Series 15 from the signature generation dataset.
 
 ##filter all zeroes
+
 cells_4_PBMC_filt<-(cells_4_PBMC[apply(cells_4_PBMC==0,1,mean)<0.1,])
 #precombat PCA
 pca<-prcomp(t(cells_4_PBMC_filt))
@@ -336,6 +341,7 @@ which(pca$x[,2]< -50)
 plot(hclust(dist(t(combat_mock_cov)),method="complete"))
 
 #running assign with the best 25 genes found in the cell line data
+
 #combat_mock_cov<-read.table("combat_cell56716_PBMC.txt",header=TRUE)
 c_mock<-as.matrix(combat_mock_cov[,c(1:12)])
 c_cov<-as.matrix(combat_mock_cov[,c(16:27)])
@@ -363,6 +369,7 @@ assign.wrapper(
   
  
  ###Barplots
+ 
 test_validation<- as.data.frame(read_excel("DATA.xlsx", sheet= "Combined"))
 test_validation$Sample<- factor(test_validation$Sample, levels= c( "Lung Biopsy","A549","BALF/PMBC"))
 test_validation$Point<- factor(test_validation$Point, levels= c("Lung Biopsy","A549", "BALF", "PMBC"))
@@ -385,7 +392,7 @@ DATA_Graph2+geom_text(data=ann_text, label=ann_text$lab, fontface="bold")
 
 
 
-##Figure 2 Extended Data Fig. 4-11
+##Figure 2
 
 
 ```{r}
@@ -731,6 +738,7 @@ DimPlot(NK, reduction = "umap", split.by = "tech")
 DimPlot(Plasma, reduction = "umap", split.by = "tech")
 DimPlot(T, reduction = "umap", split.by = "tech")
 
+Extended Data Fig. 4-11
 markers.to.plot <- c("IL1A", "CXCL2","TNFAIP3","MAFF","PPP1R15A","NFKBIA","PTX3","CXCL3","CCL20","IFIT2","ARRDC3","EREG","ARSE","MSP2K6","DHCR7","UCP2","SLC25A10","VIL1","MCM5","DHCR24","SLC9A3R1","PFN1","TPPP3","DEGS2","RAB26")
 DoHeatmap(subset(Basal,downsample=50000), features = markers.to.plot, size = 5, group.by="tech")
 DoHeatmap(subset(Dendritic,downsample=50000), features = markers.to.plot, size = 5, group.by="tech")
