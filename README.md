@@ -17,7 +17,23 @@ This pipeline is designed to be used in R environment.
 
 2. Install the following R packages, which can be obtained using either the install.packages function in R or via the [Bioconductor framework](http://www.bioconductor.org/):
 
-
+* Seurat
+* ggplots
+* ggplot2
+* cowplot
+* scater
+* scran
+* BioParallel
+* BiocNeighbors
+* data.table
+* ASSIGN
+* sva
+* stringr
+* DESeq2
+* DESeq
+* pamr
+* readxl
+* ggpub
 
 
 
