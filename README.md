@@ -49,29 +49,21 @@ This pipeline is designed to be used in R environment.
 
 ### Verify the 25 gene expression signature in test data (cell lines and clinical patients)
 
-1. Four test sets were used. (1) Series 2 is A549 cell line infected with SARS-CoV-2 compared with mock; (2) Series 15 is postmortem COVID-19 patients compared with healthy lung biopsy; (3) Bronchoalveolar lavage fluid cells of COVID-19 patients compared with healthy controls; (4) Peripheral blood mononuclear cells of COVID-19 patients compared with healthy controls. 
+1. Four test sets were used. (1) Series 2 is A549 cell line infected with SARS-CoV-2 compared with mock; (2) Series 15 is postmortem COVID-19 patients compared with healthy lung biopsy; (3) Bronchoalveolar lavage fluid (BALF) cells of COVID-19 patients compared with healthy controls; (4) Peripheral blood mononuclear cells  (PBMC) of COVID-19 patients compared with healthy controls. 
 
-2. We have to always put the [signature_gene_list_prior_25yueli.csv](https://github.com/yueli711/COVID-19/blob/master/Figure1C_left_5_6_7_16_15positive/signature_gene_list_prior_25yueli.csv) file in the directory of ```covid19```.
+2. We have to always put the [signature_gene_list_prior_25yueli.csv](https://github.com/yueli8/COVID-19/blob/master/Figure1C_left_5_6_7_16_15positive/signature_gene_list_prior_25yueli.csv) file in the directory of ```covid19```.
 
+3. Series 15 used as positive control: the input files is [56716_15positive.txt](https://github.com/yueli8/COVID-19/blob/master/Figure1C_left_5_6_7_16_15positive/56716_15positive.txt), it will generate [cell5_6_7_16_15.csv](https://github.com/yueli8/COVID-19/blob/master/Figure1C_left_5_6_7_16_15positive/cell5_6_7_16_15.csv) during the process.
 
+4. Series 2 used as negative control: the input fiel is [56716_2negative.txt](https://github.com/yueli8/COVID-19/blob/master/Figure1C_right_5_6_7_16_2negative/56716_2negative.txt), it will generate [cell5_6_7_16_2.csv](https://github.com/yueli8/COVID-19/blob/master/Figure1C_right_5_6_7_16_2negative/cell5_6_7_16_2.csv) during the process.
 
+5. Verify the 25 gene expression signature in BALF: the input file is [cell_5_6_7_16_BALF_norm.txt](https://github.com/yueli711/COVID-19/blob/master/Figure1D_BALF/cell_5_6_7_16_BALF_norm.txt), it will generate [cell_5_6_7_16_BALF.csv](https://github.com/yueli711/COVID-19/blob/master/Figure1D_BALF/cell_5_6_7_16_BALF.csv) and [combat_cell56716_BALF.csv](https://github.com/yueli711/COVID-19/blob/master/Figure1D_BALF/combat_cell56716_BALF.csv) during the process.
 
+6. Verify the 25 gene expresson signature in PBMC: the input file is [cell_5_6_7_16_PBMC_norm.txt](https://github.com/yueli711/COVID-19/blob/master/Figure1D_PBMC/cell_5_6_7_16_PBMC_norm.txt), it will generate [cell_5_6_7_16_PBMC.csv](https://github.com/yueli711/COVID-19/blob/master/Figure1D_PBMC/cell_5_6_7_16_PBMC.csv).
 
+7. all the results were shown in Barplots.
 
-
-
-
-
-
-
-
-
-
-1. Generate Table 1 and Figure 1A, B of 25 gene expression signature: input file is  
-2. Generate Figure 1C left: input files are  and [56716_15positive.txt](https://github.com/yueli711/COVID-19/blob/master/Figure1C_left_5_6_7_16_15positive/56716_15positive.txt), it will generate [cell5_6_7_16_15.csv](https://github.com/yueli711/COVID-19/blob/master/Figure1C_left_5_6_7_16_15positive/cell5_6_7_16_15.csv) during the process.
-3. Generate Figure 1C right: input files are [signature_gene_list_prior_25yueli.csv](https://github.com/yueli711/COVID-19/blob/master/Figure1C_right_5_6_7_16_2negative/signature_gene_list_prior_25yueli.csv) and [56716_2negative.txt](https://github.com/yueli711/COVID-19/blob/master/Figure1C_right_5_6_7_16_2negative/56716_2negative.txt), it will generate [cell5_6_7_16_2.csv](https://github.com/yueli711/COVID-19/blob/master/Figure1C_right_5_6_7_16_2negative/cell5_6_7_16_2.csv) during the process.
-4. Generate 1D BALF: input files are [signature_gene_list_prior_25yueli.csv](https://github.com/yueli711/COVID-19/blob/master/Figure1D_BALF/signature_gene_list_prior_25yueli.csv) and [cell_5_6_7_16_BALF_norm.txt](https://github.com/yueli711/COVID-19/blob/master/Figure1D_BALF/cell_5_6_7_16_BALF_norm.txt), it will generate [cell_5_6_7_16_BALF.csv](https://github.com/yueli711/COVID-19/blob/master/Figure1D_BALF/cell_5_6_7_16_BALF.csv) and [combat_cell56716_BALF.csv](https://github.com/yueli711/COVID-19/blob/master/Figure1D_BALF/combat_cell56716_BALF.csv) during the process.
-5. Generate 1D PBMC: input files are[signature_gene_list_prior_25yueli.csv](https://github.com/yueli711/COVID-19/blob/master/Figure1D_PBMC/signature_gene_list_prior_25yueli.csv) and [cell_5_6_7_16_PBMC_norm.txt](https://github.com/yueli711/COVID-19/blob/master/Figure1D_PBMC/cell_5_6_7_16_PBMC_norm.txt), it will generate [cell_5_6_7_16_PBMC.csv](https://github.com/yueli711/COVID-19/blob/master/Figure1D_PBMC/cell_5_6_7_16_PBMC.csv).
+### 
 6. integrate and figures of single cell: [hms_individual_integrated_OK.rds](https://drive.google.com/drive/folders/1mIFiEcPm3o5FEkeBD4v3MaGjM0xazGbx).To download all the required files click [single_cell](https://drive.google.com/drive/folders/1mIFiEcPm3o5FEkeBD4v3MaGjM0xazGbx).
 
 
