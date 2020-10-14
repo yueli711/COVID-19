@@ -43,7 +43,7 @@ This pipeline is designed to be used in R environment.
 
 ### Generate 25 gene expression signature
 
-1. Store the file [24celllines_4patients_norm.txt](https://github.com/yueli711/COVID-19/blob/master/Table1_Figure1AB_cell24_4/24celllines_4patients_norm.txt) in the directory ```covid19```, it will generate [cell24_4.csv](https://github.com/yueli711/COVID-19/blob/master/Table1_Figure1AB_cell24_4/cell24_4.csv) during the process.  
+1. Store the file [24celllines_4patients_norm.txt](https://github.com/yueli8/COVID-19/blob/master/Table1_Figure1AB_cell24_4/24celllines_4patients_norm.txt) in the directory ```covid19```, it will generate [cell24_4.csv](https://github.com/yueli8/COVID-19/blob/master/Table1_Figure1AB_cell24_4/cell24_4.csv) during the process.  
 
 2. The 25 gene expression signture and Figure 1a, Table 1, Extended Data Fig. 2 will generate after running the code.
 
@@ -57,9 +57,9 @@ This pipeline is designed to be used in R environment.
 
 4. Series 2 used as negative control: the input fiel is [56716_2negative.txt](https://github.com/yueli8/COVID-19/blob/master/Figure1C_right_5_6_7_16_2negative/56716_2negative.txt), it will generate [cell5_6_7_16_2.csv](https://github.com/yueli8/COVID-19/blob/master/Figure1C_right_5_6_7_16_2negative/cell5_6_7_16_2.csv) during the process.
 
-5. Verify the 25 gene expression signature in BALF: the input file is [cell_5_6_7_16_BALF_norm.txt](https://github.com/yueli711/COVID-19/blob/master/Figure1D_BALF/cell_5_6_7_16_BALF_norm.txt), it will generate [cell_5_6_7_16_BALF.csv](https://github.com/yueli711/COVID-19/blob/master/Figure1D_BALF/cell_5_6_7_16_BALF.csv) and [combat_cell56716_BALF.csv](https://github.com/yueli711/COVID-19/blob/master/Figure1D_BALF/combat_cell56716_BALF.csv) during the process.
+5. Verify the 25 gene expression signature in BALF: the input file is [cell_5_6_7_16_BALF_norm.txt](https://github.com/yueli8/COVID-19/blob/master/Figure1D_BALF/cell_5_6_7_16_BALF_norm.txt), it will generate [cell_5_6_7_16_BALF.csv](https://github.com/yueli8/COVID-19/blob/master/Figure1D_BALF/cell_5_6_7_16_BALF.csv) and [combat_cell56716_BALF.csv](https://github.com/yueli8/COVID-19/blob/master/Figure1D_BALF/combat_cell56716_BALF.csv) during the process.
 
-6. Verify the 25 gene expresson signature in PBMC: the input file is [cell_5_6_7_16_PBMC_norm.txt](https://github.com/yueli711/COVID-19/blob/master/Figure1D_PBMC/cell_5_6_7_16_PBMC_norm.txt), it will generate [cell_5_6_7_16_PBMC.csv](https://github.com/yueli711/COVID-19/blob/master/Figure1D_PBMC/cell_5_6_7_16_PBMC.csv).
+6. Verify the 25 gene expresson signature in PBMC: the input file is [cell_5_6_7_16_PBMC_norm.txt](https://github.com/yueli8/COVID-19/blob/master/Figure1D_PBMC/cell_5_6_7_16_PBMC_norm.txt), it will generate [cell_5_6_7_16_PBMC.csv](https://github.com/yueli8/COVID-19/blob/master/Figure1D_PBMC/cell_5_6_7_16_PBMC.csv).
 
 7. All the results can been shown in Barplots.
 
