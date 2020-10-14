@@ -102,4 +102,4 @@ Input file is ```SARS-cov2```, It will comes out the figures after running the c
 ## Contact information
 
 * Moom R. Roosam. [roosan@chapman.edu](mailto:roosan@chapman.edu)
-* Yue Li [yli1@chapman.edu](mailto:yli1@chapman.edu)
+* Yue Li. [yli1@chapman.edu](mailto:yli1@chapman.edu)
