@@ -61,10 +61,23 @@ This pipeline is designed to be used in R environment.
 
 6. Verify the 25 gene expresson signature in PBMC: the input file is [cell_5_6_7_16_PBMC_norm.txt](https://github.com/yueli711/COVID-19/blob/master/Figure1D_PBMC/cell_5_6_7_16_PBMC_norm.txt), it will generate [cell_5_6_7_16_PBMC.csv](https://github.com/yueli711/COVID-19/blob/master/Figure1D_PBMC/cell_5_6_7_16_PBMC.csv).
 
-7. all the results were shown in Barplots.
+7. All the results can been shown in Barplots.
 
-### 
-6. integrate and figures of single cell: [hms_individual_integrated_OK.rds](https://drive.google.com/drive/folders/1mIFiEcPm3o5FEkeBD4v3MaGjM0xazGbx).To download all the required files click [single_cell](https://drive.google.com/drive/folders/1mIFiEcPm3o5FEkeBD4v3MaGjM0xazGbx).
+### Expression patterns of the 25 gene signature in single cell RNA-seq data
+
+1. The files ```hc_51_02.csv, hc_52_02.csv, hc_100_02.csv, mild_141_02.csv, mild_142_02.csv, mild_144_02.csv, severe_143_02.csv, severe_145_02.csv, severe_146_02.csv, severe_148_02.csv, severe_149_02.csv, severe_152_02.csv``` have to be stored in the directory ```covid19```.
+
+2. It will generate the ```hms_individual_integrated_OK.rds``` file during the process.
+
+3. After filter, integrate, cluster, and name each cluster, we can have the Figure 2 and Extended Data Fig. 4-11.
+
+### Pharmacologic signature connections identified in the ConnectivityMap (CMAP) database.
+
+Input file is ```SARS-cov2```, It will comes out the figures after running the code.
+
+
+
+
 
 
 # Required R packages
