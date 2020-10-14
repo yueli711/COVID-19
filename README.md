@@ -9,7 +9,7 @@ This repository includes code for processing data and the analyses done for the 
 * We have provided the code and various intermediate data files that we produced in performing the analyses we describe in the manuscript.
 
 
-# How to normalize raw RNA-Seq data and generate the 25-gene signature
+# How to normalize and find out the differentially expressed genes of the RNA-Seq data
 
 This pipeline is designed to be used in R environment.
 
@@ -39,7 +39,13 @@ This pipeline is designed to be used in R environment.
 
 4. Download all the data in [covid19_inputdata](https://drive.google.com/drive/folders/1mIFiEcPm3o5FEkeBD4v3MaGjM0xazGbx). Set the directory of ```covid19``` and store all the data in that directory.
 
-5. Run the R script at Code/covid19_total.R. 
+5. Run the R script at Code/covid19_total.R. The input file is [gse147507_counts](https://github.com/yueli8/COVID-19/blob/master/input_files/gse147507_counts), the normalized file is ```gse147507_norm.csv```, and the differentially expressed genes file is ```gse147507_deg.csv```.
+
+# Generate 25 gene expression signature
+
+1. 
+
+
 
 1. Generate Table 1 and Figure 1A, B of 25 gene expression signature: input file is [24celllines_4patients_norm.txt](https://github.com/yueli711/COVID-19/blob/master/Table1_Figure1AB_cell24_4/24celllines_4patients_norm.txt), it will generate [cell24_4.csv](https://github.com/yueli711/COVID-19/blob/master/Table1_Figure1AB_cell24_4/cell24_4.csv) during the process.  
 2. Generate Figure 1C left: input files are [signature_gene_list_prior_25yueli.csv](https://github.com/yueli711/COVID-19/blob/master/Figure1C_left_5_6_7_16_15positive/signature_gene_list_prior_25yueli.csv) and [56716_15positive.txt](https://github.com/yueli711/COVID-19/blob/master/Figure1C_left_5_6_7_16_15positive/56716_15positive.txt), it will generate [cell5_6_7_16_15.csv](https://github.com/yueli711/COVID-19/blob/master/Figure1C_left_5_6_7_16_15positive/cell5_6_7_16_15.csv) during the process.
