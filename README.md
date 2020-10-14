@@ -76,31 +76,6 @@ This pipeline is designed to be used in R environment.
 Input file is ```SARS-cov2```, It will comes out the figures after running the code.
 
 
-
-
-
-
-# Required R packages
-
-1. Seurat
-2. ggplots
-3. ggplot2
-4. cowplot
-5. scater
-6. scran
-7. BioParallel
-8. BiocNeighbors
-9. data.table
-10. ASSIGN
-11. sva
-12. stringr
-13. DESeq2
-14. DESeq
-15. pamr
-16. readxl
-17. ggpubr
-
-
 # Explain all the R files:
 
 `covid19_total.R` A script that combined all the scripts.
@@ -122,3 +97,9 @@ Input file is ```SARS-cov2```, It will comes out the figures after running the c
 `DEseq2_Norm_remove_batch_volcano_finalized.R` Excluded all the fles of not infected with SARS-CoV-2, not from homo sapiens or another file Series16_A549-ACE2_SARS-CoV-2_Rux_2. Normalize,remove batch effect of 36 and 24 celllines, DESeq, differetially expressed genes, volcano plot.
 
 `complex_heatmap.R` Draw complex heatmap to test remove batch effect.
+
+
+## Contact information
+
+* Moom R. Roosam. [roosan@chapman.edu](mailto: roosan@chapman.edu)
+* Yue Li [yli1@chapman.edu](mailto: yli1@chapman.edu)
