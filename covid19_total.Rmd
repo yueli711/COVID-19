@@ -773,7 +773,7 @@ RidgePlot(T, features = c("IL1A", "CXCL2","TNFAIP3","MAFF","PPP1R15A","NFKBIA","
 ##Figure 3
 
 ```{r}
-cov2<-read.csv("~/Desktop/COVID19/Manuscript/Source Data/SARS-cov2.csv")
+cov2<-read.csv("~/covid19/SARS-cov2.csv")
 strong_cov2<-droplevels.data.frame(subset(cov2,cov2$Score< -90|cov2$Score > 90))
 dim(strong_cov2)
 drugs<-c("ivermectin","ibuprofen","irbesartan","olmesartan","losartan","chloroquine","dexamethasone","fluticasone","perindopril","lopinavir","ribavirin","ritonavir","ramipril","tamoxifen","atorvastatin","ketoconazole")
