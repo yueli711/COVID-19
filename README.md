@@ -37,17 +37,19 @@ This pipeline is designed to be used in R environment.
 
 3. Clone this git repository to your computer.
 
-4. Download all the data in [covid19_inputdata](https://drive.google.com/drive/folders/1mIFiEcPm3o5FEkeBD4v3MaGjM0xazGbx). Set the directory of ```covid19``` and store all the data in that directory.
+4. Download all the data in [covid19_inputdata](https://drive.google.com/drive/folders/1mIFiEcPm3o5FEkeBD4v3MaGjM0xazGbx). Set the directory of ```~/covid19``` and store all the data in that directory.
 
 5. Run the R script at Code/covid19_total.R. The input file is [gse147507_counts](https://github.com/yueli8/COVID-19/blob/master/input_files/gse147507_counts), the normalized file is ```gse147507_norm.csv```, and the differentially expressed genes file is ```gse147507_deg.csv```.
 
 # Generate 25 gene expression signature
 
-1. Store the file [24celllines_4patients_norm.txt](https://github.com/yueli711/COVID-19/blob/master/Table1_Figure1AB_cell24_4/24celllines_4patients_norm.txt) in the directory of ```covid19```, it will generate [cell24_4.csv](https://github.com/yueli711/COVID-19/blob/master/Table1_Figure1AB_cell24_4/cell24_4.csv) during the process.  
+1. Store the file [24celllines_4patients_norm.txt](https://github.com/yueli711/COVID-19/blob/master/Table1_Figure1AB_cell24_4/24celllines_4patients_norm.txt) in the directory of ```~/covid19```, it will generate [cell24_4.csv](https://github.com/yueli711/COVID-19/blob/master/Table1_Figure1AB_cell24_4/cell24_4.csv) during the process.  
 
 2. The 25 gene expression signture and Figure 1a, Table 1, Extended Data Fig. 2 will generate after running the code.
 
-#
+# Verify the 25 gene expression signature in test data (cell lines and clinical patients)
+
+1. Four test sets were used. (1) Series 2 is A549 cell line infected with SARS-CoV-2 compared with mock; (2) Series 15 is postmortem COVID-19 patients compared with healthy lung biopsy; (3) Bronchoalveolar lavage fluid cells of COVID-19 patients compared with healthy controls; (4) Peripheral blood mononuclear cells od COVID-19 patients compared with healthy controls. 
 
 
 
