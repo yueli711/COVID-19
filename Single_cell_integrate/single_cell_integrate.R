@@ -11,23 +11,22 @@ setwd("/home/li/Transcriptomic_patients/gse145926/test")
 #input, CreateSeuratObject, filter, save
 a<-"hc_51_02.csv"
 a1<-data.frame(fread(a),check.names=FALSE, row.names=1)
-#构建Seurat对象，这里会有个初筛，保证所有基因在至少3个细胞中表达（0.1%细胞数），保证每个细胞至少能检测到200个基因。
+#Seurat
 pbmc<- CreateSeuratObject(counts = a1, project = "h1", min.cells = 3, min.features = 200)
 pbmc
-pbmc[["percent.mt"]] <- PercentageFeatureSet(pbmc, pattern = "^MT-")#线粒体基因占比计算
-#用subset函数，质控：筛选检测到基因数目超过2500或低于200的细胞，单个细胞中线粒体基因数目占比超过>5%
+pbmc[["percent.mt"]] <- PercentageFeatureSet(pbmc, pattern = "^MT-")
+
 pbmc <- subset(pbmc, subset = nFeature_RNA > 200 & nFeature_RNA < 2500 & percent.mt < 5)
-#数据标准化：默认使用数据标准化方法是LogNormalize, 每个细胞总的表达量都标准化到10000，然后log取对数
+
 pbmc <- NormalizeData(pbmc, normalization.method = "LogNormalize", scale.factor = 10000)
-#变化基因鉴定：鉴定在细胞间表达高度变化的基因，后续研究需要集中于这部分基因，首先计算每一个基因的均值和方差，并且直接模拟其关系。默认返回2000个基因。
+
 pbmc <- FindVariableFeatures(pbmc, selection.method = "vst", nfeatures = 2000)
-#数据缩放 线性转换缩放数据，ScaleData()函数可以实现此功能。最终每个基因均值为0，方差为1。结果存放于pbmc[["RNA"]]@scale.data
+
 all.genes <- rownames(pbmc)
-#设置参数features是因为ScaleData默认处理前面鉴定的差异基因。这一步怎么做都不会影响到后续pca和聚类，但是会影响做热图
+
 pbmc <- ScaleData(pbmc, features = all.genes)
-#移除影响方差的因素
-#pbmc <- ScaleData(pbmc, vars.to.regress = "percent.mt")
-#对缩放后的数据进行PCA分析，默认使用前面鉴定表达变化大的基因。使用features参数可以重新定义数据集。
+
+
 pbmc <- RunPCA(pbmc, features = VariableFeatures(object = pbmc))
 #pbmc <- FindClusters(pbmc, resolution = 0.5)
 pbmc <- RunUMAP(pbmc, dims = 1:10)
