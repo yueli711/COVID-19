@@ -12,19 +12,19 @@ suppressMessages(require(scran))
 suppressMessages(require(BiocParallel))
 suppressMessages(require(BiocNeighbors))
 
-setwd("/home/li/covid19/result01/total/cov25")
+setwd("~/cov25")
 Series15<-read.csv("pathway_activity_testset.csv",header=TRUE)
 Series15_cov<-Series15[,2]
 
-setwd("/home/li/covid19/result01/total/cov_negative25")
+setwd("~/cov_negative25")
 Series2<-read.csv("pathway_activity_testset.csv",header=TRUE)
 Series2_V1<-Series2[,2]
 
-setwd("/home/li/covid19/result01/total/cov_BALF25")
+setwd("~/cov_BALF25")
 BALF<-read.csv("pathway_activity_testset.csv",header=TRUE)
 BALF_V1<-BALF[,2]
 
-setwd("/home/li/covid19/result01/total/cov_PBMC25")
+setwd("~/cov_PBMC25")
 PBMC<-read.csv("pathway_activity_testset.csv",header=TRUE)
 PBMC_V1<-PBMC[,2]
 
