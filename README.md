@@ -43,7 +43,7 @@ This pipeline is designed to be used in R environment.
 
 ### Generate 25 gene expression signature
 
-1. Store the file [24celllines_4patients_norm.txt](https://github.com/yueli8/COVID-19/blob/master/input_files/24celllines_4patients_norm.txt) in the directory ```covid19```, it will generate [cell24_4.csv](https://github.com/yueli8/COVID-19/blob/master/input_files/signature_gene_list_prior_25yueli.csv) during the process.  
+1. Store the file [24celllines_4patients_norm.txt](https://github.com/yueli8/COVID-19/blob/master/input_files/24celllines_4patients_norm.txt) in the directory ```~/covid19```, it will generate [cell24_4.csv](https://github.com/yueli8/COVID-19/blob/master/input_files/signature_gene_list_prior_25yueli.csv) during the process.  
 
 2. The 25 gene expression signture and Figure 1a, Table 1, Extended Data Fig. 2 will generate after running the code.
 
@@ -65,7 +65,7 @@ This pipeline is designed to be used in R environment.
 
 ### Expression patterns of the 25 gene signature in single cell RNA-seq data
 
-1. The single sell RNA-seq files [hc_51_02.csv](https://drive.google.com/drive/folders/1mIFiEcPm3o5FEkeBD4v3MaGjM0xazGbx), [hc_52_02.csv](https://drive.google.com/drive/folders/1mIFiEcPm3o5FEkeBD4v3MaGjM0xazGbx), [hc_100_02.csv](https://drive.google.com/drive/folders/1mIFiEcPm3o5FEkeBD4v3MaGjM0xazGbx), [mild_141_02.csv](https://drive.google.com/drive/folders/1mIFiEcPm3o5FEkeBD4v3MaGjM0xazGbx), [mild_142_02.csv](https://drive.google.com/drive/folders/1mIFiEcPm3o5FEkeBD4v3MaGjM0xazGbx), [mild_144_02.csv](https://drive.google.com/drive/folders/1mIFiEcPm3o5FEkeBD4v3MaGjM0xazGbx), [severe_143_02.csv](https://drive.google.com/drive/folders/1mIFiEcPm3o5FEkeBD4v3MaGjM0xazGbx), [severe_145_02.csv](https://drive.google.com/drive/folders/1mIFiEcPm3o5FEkeBD4v3MaGjM0xazGbx), [severe_146_02.csv](https://drive.google.com/drive/folders/1mIFiEcPm3o5FEkeBD4v3MaGjM0xazGbx), [severe_148_02.csv](https://drive.google.com/drive/folders/1mIFiEcPm3o5FEkeBD4v3MaGjM0xazGbx), [severe_149_02.csv](https://drive.google.com/drive/folders/1mIFiEcPm3o5FEkeBD4v3MaGjM0xazGbx), [severe_152_02.csv](https://drive.google.com/drive/folders/1mIFiEcPm3o5FEkeBD4v3MaGjM0xazGbx) have to be stored in the directory ```covid19```.
+1. The single sell RNA-seq files [hc_51_02.csv](https://drive.google.com/drive/folders/1mIFiEcPm3o5FEkeBD4v3MaGjM0xazGbx), [hc_52_02.csv](https://drive.google.com/drive/folders/1mIFiEcPm3o5FEkeBD4v3MaGjM0xazGbx), [hc_100_02.csv](https://drive.google.com/drive/folders/1mIFiEcPm3o5FEkeBD4v3MaGjM0xazGbx), [mild_141_02.csv](https://drive.google.com/drive/folders/1mIFiEcPm3o5FEkeBD4v3MaGjM0xazGbx), [mild_142_02.csv](https://drive.google.com/drive/folders/1mIFiEcPm3o5FEkeBD4v3MaGjM0xazGbx), [mild_144_02.csv](https://drive.google.com/drive/folders/1mIFiEcPm3o5FEkeBD4v3MaGjM0xazGbx), [severe_143_02.csv](https://drive.google.com/drive/folders/1mIFiEcPm3o5FEkeBD4v3MaGjM0xazGbx), [severe_145_02.csv](https://drive.google.com/drive/folders/1mIFiEcPm3o5FEkeBD4v3MaGjM0xazGbx), [severe_146_02.csv](https://drive.google.com/drive/folders/1mIFiEcPm3o5FEkeBD4v3MaGjM0xazGbx), [severe_148_02.csv](https://drive.google.com/drive/folders/1mIFiEcPm3o5FEkeBD4v3MaGjM0xazGbx), [severe_149_02.csv](https://drive.google.com/drive/folders/1mIFiEcPm3o5FEkeBD4v3MaGjM0xazGbx), [severe_152_02.csv](https://drive.google.com/drive/folders/1mIFiEcPm3o5FEkeBD4v3MaGjM0xazGbx) have to be stored in the directory ```~/covid19```.
 
 2. It will generate the ```hms_individual_integrated_OK.rds``` file during the process.
 
