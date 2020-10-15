@@ -45,6 +45,17 @@ This pipeline is designed to be used in R environment.
 
 7. All the results can been shown in Barplots. There are two ways to create barplot: one is without excel file,and the other is with excel file. If without excel file, we have to create an excel file, so the code is [bar_code_yueli.R](https://github.com/yueli8/COVID-19/blob/master/bar_code_yueli/bar_code_yueli.R). The input file should be the result of pathway_activity_testset in samples Series2, 5 , BALF and PBMC. If we can creat an excel file by our own: [DATA.xlsx](https://github.com/yueli8/COVID-19/blob/master/input_files/DATA.xlsx), then we can directly use [Barplot_verify.R](https://github.com/yueli8/COVID-19/blob/master/Barplot_verify/Barplot_verify.R). 
 
+### Generate 25 gene expression signature
+
+1. Store the file [24celllines_4patients_norm.txt](https://github.com/yueli8/COVID-19/blob/master/25_gene_expression_signature/24celllines_4patients_norm.txt) in the directory ```~/covid19```, run the code [cell24_4patients_25yueli.R](ttps://github.com/yueli8/COVID-19/blob/master/script/cell24_4patients_25yueli.R). It will generate [cell24_4.csv](https://github.com/yueli8/COVID-19/blob/master/25_gene_expression_signature/cell24_4.csv) during the process.
+
+2. The 25 gene expression signature and Figure 1a, Table 1, Extended Data Fig. 2 will generate after running the code.
+
+### Verify the 25 gene expression signature in the test data (cell lines and clinical patients)
+
+1. Four test sets were used. (1) Series 2 is A549 cell line infeted with SARS-CoV-2 compared with mock; (2) Series 
+ 
+ 
 ### Expression patterns of the 25 gene signature in single cell RNA-seq data
 
 1. The single sell RNA-seq files [hc_51_02.csv](https://drive.google.com/drive/folders/1mIFiEcPm3o5FEkeBD4v3MaGjM0xazGbx), [hc_52_02.csv](https://drive.google.com/drive/folders/1mIFiEcPm3o5FEkeBD4v3MaGjM0xazGbx), [hc_100_02.csv](https://drive.google.com/drive/folders/1mIFiEcPm3o5FEkeBD4v3MaGjM0xazGbx), [mild_141_02.csv](https://drive.google.com/drive/folders/1mIFiEcPm3o5FEkeBD4v3MaGjM0xazGbx), [mild_142_02.csv](https://drive.google.com/drive/folders/1mIFiEcPm3o5FEkeBD4v3MaGjM0xazGbx), [mild_144_02.csv](https://drive.google.com/drive/folders/1mIFiEcPm3o5FEkeBD4v3MaGjM0xazGbx), [severe_143_02.csv](https://drive.google.com/drive/folders/1mIFiEcPm3o5FEkeBD4v3MaGjM0xazGbx), [severe_145_02.csv](https://drive.google.com/drive/folders/1mIFiEcPm3o5FEkeBD4v3MaGjM0xazGbx), [severe_146_02.csv](https://drive.google.com/drive/folders/1mIFiEcPm3o5FEkeBD4v3MaGjM0xazGbx), [severe_148_02.csv](https://drive.google.com/drive/folders/1mIFiEcPm3o5FEkeBD4v3MaGjM0xazGbx), [severe_149_02.csv](https://drive.google.com/drive/folders/1mIFiEcPm3o5FEkeBD4v3MaGjM0xazGbx), [severe_152_02.csv](https://drive.google.com/drive/folders/1mIFiEcPm3o5FEkeBD4v3MaGjM0xazGbx) have to be stored in the directory ```~/covid19```.
