@@ -67,7 +67,7 @@ The running code is [connectivity_map.R](https://github.com/yueli8/COVID-19/blob
 
 3. [5_6_7_16_15positive.R](https://github.com/yueli8/COVID-19/blob/master/Series15/5_6_7_16_15positive.R) Use [signature_gene_list_prior_25yueli.csv](https://github.com/yueli8/COVID-19/blob/master/input_files/signature_gene_list_prior_25yueli.csv) to test series15 as positive control.
 
-4. [5_6_7_16_2negative.R](https://github.com/yueli8/COVID-19/blob/master/Series15/5_6_7_16_15positive.R) Use [signature_gene_list_prior_25yueli.csv](https://github.com/yueli8/COVID-19/blob/master/input_files/signature_gene_list_prior_25yueli.csv) to test series2 as negative control.
+4. [5_6_7_16_2negative.R](https://github.com/yueli8/COVID-19/blob/master/Series2/5_6_7_16_2negative.R) Use [signature_gene_list_prior_25yueli.csv](https://github.com/yueli8/COVID-19/blob/master/input_files/signature_gene_list_prior_25yueli.csv) to test series2 as negative control.
 
 5. [cell_5_6_7_16_BALF_assign.R](https://github.com/yueli8/COVID-19/blob/master/BALF/cell_5_6_7_16_BALF_assign.R) Use [signature_gene_list_prior_25yueli.csv](https://github.com/yueli8/COVID-19/blob/master/input_files/signature_gene_list_prior_25yueli.csv) to test BALF data.
 
@@ -75,7 +75,7 @@ The running code is [connectivity_map.R](https://github.com/yueli8/COVID-19/blob
 
 7. [single_cell_integrate.R](https://github.com/yueli8/COVID-19/blob/master/Single_cell_integrate/single_cell_integrate.R) Input single cell files, filter, CreateSeuratObject, normalize, then integrat 12 samples.
 
-8. [single_cell.R](https://github.com/yueli8/COVID-19/blob/master/Single_cell_integrate/single_cell_integrate.R) Use [hms_individual_integrated_OK.rds](https://drive.google.com/drive/folders/1mIFiEcPm3o5FEkeBD4v3MaGjM0xazGbx) to process single cell data, draw the figures.
+8. [single_cell.R](https://github.com/yueli8/COVID-19/blob/master/Single_cell_cluster_figure/single_cell.R) Use [hms_individual_integrated_OK.rds](https://drive.google.com/drive/folders/1mIFiEcPm3o5FEkeBD4v3MaGjM0xazGbx) to process single cell data, draw the figures.
 
 9. [Normalize_differentially expressed genes.R](https://github.com/yueli8/COVID-19/blob/master/script/complex_heatmap.R) Excluded all the fles of not infected with SARS-CoV-2, not from homo sapiens or another file Series16_A549-ACE2_SARS-CoV-2_Rux_2. Normalize,remove batch effect of 36 and 24 celllines, DESeq, differetially expressed genes, volcano plot.
 
