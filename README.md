@@ -39,11 +39,9 @@ This pipeline is designed to be used in R environment.
 
 4. Download all the data in [covid19_inputdata](https://drive.google.com/drive/folders/1mIFiEcPm3o5FEkeBD4v3MaGjM0xazGbx). Set the directory of ```~/covid19``` and store all the data in that directory.
 
-5. Run the R script at [Normalize_differentially expressed genes.R](https://github.com/yueli8/COVID-19/blob/master/script/Normalize_differentially_expressed_genes.R). The input file is [gse147507_counts](https://github.com/yueli8/COVID-19/blob/master/input_files/gse147507_counts), the normalied file is [gse147507_norm.csv](https://github.com/yueli8/COVID-19/blob/master/Normalize_differentially_expressed_genes/gse147507_norm.csv), and the differentially expressed genes file is [gse147507_deg.csv](https://github.com/yueli8/COVID-19/blob/master/Normalize_differentially_expressed_genes/gse147507_deg.csv) during the process.
+### Normalize the read count andfind the differentially expresssed genes
 
-6. Verify the 25 gene expresson signature in PBMC: the input file is [cell_5_6_7_16_PBMC_norm.txt](https://github.com/yueli8/COVID-19/blob/master/input_files/cell_5_6_7_16_PBMC_norm.txt). The code is [cell_5_6_7_16_PBMC_assign.R](https://github.com/yueli8/COVID-19/blob/master/PBMC/cell_5_6_7_16_PBMC_assign.R). It will generate [cell_5_6_7_16_PBMC.csv](https://github.com/yueli8/COVID-19/blob/master/input_files/cell_5_6_7_16_PBMC.csv).
-
-7. All the results can been shown in Barplots. There are two ways to create barplot: one is without excel file,and the other is with excel file. If without excel file, we have to create an excel file, so the code is [bar_code_yueli.R](https://github.com/yueli8/COVID-19/blob/master/bar_code_yueli/bar_code_yueli.R). The input file should be the result of pathway_activity_testset in samples Series2, 5 , BALF and PBMC. If we can creat an excel file by our own: [DATA.xlsx](https://github.com/yueli8/COVID-19/blob/master/input_files/DATA.xlsx), then we can directly use [Barplot_verify.R](https://github.com/yueli8/COVID-19/blob/master/Barplot_verify/Barplot_verify.R). 
+Run the R script at [Normalize_differentially expressed genes.R](https://github.com/yueli8/COVID-19/blob/master/script/Normalize_differentially_expressed_genes.R). The input file is [gse147507_counts](https://github.com/yueli8/COVID-19/blob/master/input_files/gse147507_counts), the normalied file is [gse147507_norm.csv](https://github.com/yueli8/COVID-19/blob/master/Normalize_differentially_expressed_genes/gse147507_norm.csv), and the differentially expressed genes file is [gse147507_deg.csv](https://github.com/yueli8/COVID-19/blob/master/Normalize_differentially_expressed_genes/gse147507_deg.csv) during the process.
 
 ### Generate 25 gene expression signature
 
