@@ -107,6 +107,8 @@ The running code is [connectivity_map.R](https://github.com/yueli8/COVID-19/blob
 
 12. [connectivity_map.R](https://github.com/yueli8/COVID-19/blob/master/Connectivity_map/connectivity_map.R) Used the [SARS-cov2.csv](https://github.com/yueli8/COVID-19/blob/master/Connectivity_map/SARS-cov2.csv) to draw the connectivity map. 
 
+13. [bar_code_yueli.R](https://github.com/yueli8/COVID-19/blob/master/script/bar_code_yueli.R) Create an excel file of all the cell lines and clinical patients, then draw the bar code. 
+
 
 ## Contact information
 
