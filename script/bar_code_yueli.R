@@ -61,7 +61,7 @@ DATA01<-read.csv("DATA01.csv", header = TRUE)
 
 
 ###Barplots
-setwd("/home/li/covid19/result01/bar_code")
+setwd("~/bar_code")
 DATA<- data.frame(DATA01, check.names=F)
 #DATA$Sample<- factor(DATA$Sample, levels= c( "Lung Biopsy","A549","BALF/PMBC"))
 #DATA$Point<- factor(DATA$Point, levels= c("Lung Biopsy/A549", "BALF", "PMBC"))
@@ -80,7 +80,7 @@ DATA_Graph1
 DATA_Graph2
 
 ###Barplots
-setwd("/home/li/covid19/result01/bar_code")
+setwd("~/bar_code")
 test_validation<- as.data.frame(read_excel("DATA.xlsx", sheet= "Combined"))
 test_validation$Sample<- factor(test_validation$Sample, levels= c( "Lung Biopsy","A549","BALF/PBMC"))
 test_validation$Point<- factor(test_validation$Point, levels= c("Lung Biopsy","A549", "BALF", "PBMC"))
@@ -95,7 +95,7 @@ DATA_Graph2+geom_text(data=ann_text, label=ann_text$lab, fontface="bold")
 
 
 ##Figure 3
-setwd("/home/li/covid19/result01/bar_code")
+setwd("~/bar_code")
 cov2<-read.csv("SARS-cov2.csv", header=TRUE)
 strong_cov2<-droplevels.data.frame(subset(cov2,cov2$Score< -90|cov2$Score > 90))
 dim(strong_cov2)
