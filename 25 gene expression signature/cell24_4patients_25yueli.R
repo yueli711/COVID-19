@@ -2,7 +2,7 @@ library(stringr)
 library(sva)
 library(ASSIGN)
 library(data.table)
-setwd("/home/li/covid19/result01/cell24_4")
+setwd("~/covid19/result01/cell24_4")
 cell24_4<-read.table("24celllines_4patients_norm.txt")
 write.csv(cell24_4,"cell24_4.csv")
 
