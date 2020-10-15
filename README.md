@@ -69,7 +69,7 @@ This pipeline is designed to be used in R environment.
 
 2. Runnung the code [single_cell_integrate.R](https://github.com/yueli8/COVID-19/blob/master/Single_cell_integrate/single_cell_integrate.R). After filter, and integration, it will generate the [hms_individual_integrated_OK.rds](https://drive.google.com/drive/folders/1mIFiEcPm3o5FEkeBD4v3MaGjM0xazGbx) file during the process.
 
-3. Running the code [single_cell.R](https://github.com/yueli8/COVID-19/blob/master/Single_cell_cluster_figure/single_cell.R). After name each clustered, plotting, we can have the Figure 2 and Extended Data Fig. 4-11.
+3. Running the code [single_cell.R](https://github.com/yueli8/COVID-19/blob/master/Single_cell_cluster_figure/single_cell.R). After name each clustered, plotted, we can have the Figure 2 and Extended Data Fig. 4-11.
 
 ### Pharmacologic signature connections identified in the ConnectivityMap (CMAP) database.
 
