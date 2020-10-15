@@ -58,28 +58,28 @@ This pipeline is designed to be used in R environment.
 
 The running code is [connectivity_map.R](https://github.com/yueli8/COVID-19/blob/master/Connectivity_map/connectivity_map.R). Input file is [SARS-cov2](https://github.com/yueli8/COVID-19/blob/master/Connectivity_map/SARS-cov2.csv), It will come out connectivity map figures after running the code.
 
-
+10. 
 ## Explain all the R files:
 
-[covid19_total.R](https://github.com/yueli8/COVID-19/blob/master/covid19_total.Rmd) A script that combined all the scripts.
+1. [covid19_total.R](https://github.com/yueli8/COVID-19/blob/master/covid19_total.Rmd) A script that combined all the scripts.
 
-[cell24_4patients_25yueli.R](https://github.com/yueli8/COVID-19/blob/master/25_gene_expression_signature/cell24_4patients_25yueli.R) Use 24 celllines [24celllines_4patients_norm.txt](https://github.com/yueli8/COVID-19/blob/master/25_gene_expression_signature/24celllines_4patients_norm.txt)as training set, 4 patients as test set, generate 25 gene expression signature.
+2. [cell24_4patients_25yueli.R](https://github.com/yueli8/COVID-19/blob/master/25_gene_expression_signature/cell24_4patients_25yueli.R) Use 24 celllines [24celllines_4patients_norm.txt](https://github.com/yueli8/COVID-19/blob/master/25_gene_expression_signature/24celllines_4patients_norm.txt)as training set, 4 patients as test set, generate 25 gene expression signature.
 
-[5_6_7_16_15positive.R](https://github.com/yueli8/COVID-19/blob/master/Series15/5_6_7_16_15positive.R) Use [signature_gene_list_prior_25yueli.csv](https://github.com/yueli8/COVID-19/blob/master/25_gene_expression_signature/24celllines_4patients_norm.txt) to test series15 as positive control.
+3. [5_6_7_16_15positive.R](https://github.com/yueli8/COVID-19/blob/master/Series15/5_6_7_16_15positive.R) Use [signature_gene_list_prior_25yueli.csv](https://github.com/yueli8/COVID-19/blob/master/25_gene_expression_signature/24celllines_4patients_norm.txt) to test series15 as positive control.
 
-[5_6_7_16_2negative.R](https://github.com/yueli8/COVID-19/blob/master/Series15/5_6_7_16_15positive.R) Use [signature_gene_list_prior_25yueli.csv](https://github.com/yueli8/COVID-19/blob/master/25_gene_expression_signature/24celllines_4patients_norm.txt) to test series2 as negative control.
+4. [5_6_7_16_2negative.R](https://github.com/yueli8/COVID-19/blob/master/Series15/5_6_7_16_15positive.R) Use [signature_gene_list_prior_25yueli.csv](https://github.com/yueli8/COVID-19/blob/master/25_gene_expression_signature/24celllines_4patients_norm.txt) to test series2 as negative control.
 
-[cell_5_6_7_16_BALF_assign.R](https://github.com/yueli8/COVID-19/blob/master/BALF/cell_5_6_7_16_BALF_assign.R) Use [signature_gene_list_prior_25yueli.csv](https://github.com/yueli8/COVID-19/blob/master/25_gene_expression_signature/24celllines_4patients_norm.txt) to test BALF data.
+5. [cell_5_6_7_16_BALF_assign.R](https://github.com/yueli8/COVID-19/blob/master/BALF/cell_5_6_7_16_BALF_assign.R) Use [signature_gene_list_prior_25yueli.csv](https://github.com/yueli8/COVID-19/blob/master/25_gene_expression_signature/24celllines_4patients_norm.txt) to test BALF data.
 
-[cell_5_6_7_16_PBMC_assign.R](https://github.com/yueli8/COVID-19/blob/master/PBMC/cell_5_6_7_16_PBMC_assign.R)  Use [signature_gene_list_prior_25yueli.csv](https://github.com/yueli8/COVID-19/blob/master/25_gene_expression_signature/24celllines_4patients_norm.txt) to test data.
+6. [cell_5_6_7_16_PBMC_assign.R](https://github.com/yueli8/COVID-19/blob/master/PBMC/cell_5_6_7_16_PBMC_assign.R)  Use [signature_gene_list_prior_25yueli.csv](https://github.com/yueli8/COVID-19/blob/master/25_gene_expression_signature/24celllines_4patients_norm.txt) to test data.
 
-[single_cell_integrate.R](https://github.com/yueli8/COVID-19/blob/master/Single_cell_integrate/single_cell_integrate.R) Input single cell files, filter, CreateSeuratObject, normalize, then integrat 12 samples.
+7. [single_cell_integrate.R](https://github.com/yueli8/COVID-19/blob/master/Single_cell_integrate/single_cell_integrate.R) Input single cell files, filter, CreateSeuratObject, normalize, then integrat 12 samples.
 
-[single_cell.R](https://github.com/yueli8/COVID-19/blob/master/Single_cell_integrate/single_cell_integrate.R) Use [hms_individual_integrated_OK.rds](https://drive.google.com/drive/folders/1mIFiEcPm3o5FEkeBD4v3MaGjM0xazGbx) to process single cell data, draw the figures.
+8. [single_cell.R](https://github.com/yueli8/COVID-19/blob/master/Single_cell_integrate/single_cell_integrate.R) Use [hms_individual_integrated_OK.rds](https://drive.google.com/drive/folders/1mIFiEcPm3o5FEkeBD4v3MaGjM0xazGbx) to process single cell data, draw the figures.
 
-[Normalize_differentially expressed genes.R](https://github.com/yueli8/COVID-19/blob/master/script/complex_heatmap.R) Excluded all the fles of not infected with SARS-CoV-2, not from homo sapiens or another file Series16_A549-ACE2_SARS-CoV-2_Rux_2. Normalize,remove batch effect of 36 and 24 celllines, DESeq, differetially expressed genes, volcano plot.
+9. [Normalize_differentially expressed genes.R](https://github.com/yueli8/COVID-19/blob/master/script/complex_heatmap.R) Excluded all the fles of not infected with SARS-CoV-2, not from homo sapiens or another file Series16_A549-ACE2_SARS-CoV-2_Rux_2. Normalize,remove batch effect of 36 and 24 celllines, DESeq, differetially expressed genes, volcano plot.
 
-[complex_heatmap.R](https://github.com/yueli8/COVID-19/blob/master/script/complex_heatmap.R) Draw complex heatmap to test remove batch effect.
+10. [complex_heatmap.R](https://github.com/yueli8/COVID-19/blob/master/script/complex_heatmap.R) Draw complex heatmap to test remove batch effect.
 
 
 ## Contact information
