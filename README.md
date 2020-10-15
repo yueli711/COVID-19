@@ -39,7 +39,7 @@ This pipeline is designed to be used in R environment.
 
 4. Download all the data in [covid19_inputdata](https://drive.google.com/drive/folders/1mIFiEcPm3o5FEkeBD4v3MaGjM0xazGbx). Set the directory of ```~/covid19``` and store all the data in that directory.
 
-5. Run the R script at [Normalize_differentially expressed genes.R](https://github.com/yueli8/COVID-19/blob/master/Normalize_differentially%20expressed%20genes/Normalize_differentially%20expressed%20genes.R). The input file is [gse147507_counts](https://github.com/yueli8/COVID-19/blob/master/input_files/gse147507_counts), the normalized file is [gse147507_norm.csv](https://github.com/yueli8/COVID-19/blob/master/Normalize_differentially%20expressed%20genes/Normalize_differentially%20expressed%20genes.R), and the differentially expressed genes file is [gse147507_deg.csv](https://github.com/yueli8/COVID-19/blob/master/Normalize_differentially%20expressed%20genes/gse147507_deg.csv).
+5. Run the R script at [Normalize_differentially expressed genes.R](https://github.com/yueli8/COVID-19/blob/master/Normalize_differentially%20expressed%20genes/Normalize_differentially%20expressed%20genes.R). The input file is [gse147507_counts](https://github.com/yueli8/COVID-19/blob/master/input_files/gse147507_counts), the normalized file is [gse147507_norm.csv](https://github.com/yueli8/COVID-19/blob/master/Normalize_differentially%20expressed%20genes/gse147507_norm.csv), and the differentially expressed genes file is [gse147507_deg.csv](https://github.com/yueli8/COVID-19/blob/master/Normalize_differentially%20expressed%20genes/gse147507_deg.csv).
 
 ### Generate 25 gene expression signature
 
