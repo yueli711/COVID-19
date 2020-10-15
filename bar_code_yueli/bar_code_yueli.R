@@ -12,19 +12,19 @@ suppressMessages(require(scran))
 suppressMessages(require(BiocParallel))
 suppressMessages(require(BiocNeighbors))
 
-setwd("/home/li/covid19/result01/total/cov25")
+setwd("~/covid19/result01/total/cov25")
 Series15<-read.csv("pathway_activity_testset.csv",header=TRUE)
 Series15_cov<-Series15[,2]
 
-setwd("/home/li/covid19/result01/total/cov_negative25")
+setwd("~/covid19/result01/total/cov_negative25")
 Series2<-read.csv("pathway_activity_testset.csv",header=TRUE)
 Series2_V1<-Series2[,2]
 
-setwd("/home/li/covid19/result01/total/cov_BALF25")
+setwd("~/covid19/result01/total/cov_BALF25")
 BALF<-read.csv("pathway_activity_testset.csv",header=TRUE)
 BALF_V1<-BALF[,2]
 
-setwd("/home/li/covid19/result01/total/cov_PBMC25")
+setwd("~/covid19/result01/total/cov_PBMC25")
 PBMC<-read.csv("pathway_activity_testset.csv",header=TRUE)
 PBMC_V1<-PBMC[,2]
 
@@ -80,7 +80,7 @@ DATA_Graph1
 DATA_Graph2
 
 ###Barplots
-setwd("/home/li/covid19/result01/bar_code")
+setwd("~/covid19/result01/bar_code")
 test_validation<- as.data.frame(read_excel("DATA.xlsx", sheet= "Combined"))
 test_validation$Sample<- factor(test_validation$Sample, levels= c( "Lung Biopsy","A549","BALF/PBMC"))
 test_validation$Point<- factor(test_validation$Point, levels= c("Lung Biopsy","A549", "BALF", "PBMC"))
@@ -95,7 +95,7 @@ DATA_Graph2+geom_text(data=ann_text, label=ann_text$lab, fontface="bold")
 
 
 ##Figure 3
-setwd("/home/li/covid19/result01/bar_code")
+setwd("~/covid19/result01/bar_code")
 cov2<-read.csv("SARS-cov2.csv", header=TRUE)
 strong_cov2<-droplevels.data.frame(subset(cov2,cov2$Score< -90|cov2$Score > 90))
 dim(strong_cov2)
