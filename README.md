@@ -35,7 +35,7 @@ This pipeline is designed to be used in R environment.
 * readxl
 * ggpubr
 
-3. Clone this git repository to your computer.
+3. Clone this github repository to your computer.
 
 4. Download all the data in [covid19_inputdata](https://drive.google.com/drive/folders/1mIFiEcPm3o5FEkeBD4v3MaGjM0xazGbx). Set the directory of ```~/covid19``` and store all the data in that directory.
 
