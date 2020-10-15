@@ -39,7 +39,7 @@ This pipeline is designed to be used in R environment.
 
 4. Download all the data in [covid19_inputdata](https://drive.google.com/drive/folders/1mIFiEcPm3o5FEkeBD4v3MaGjM0xazGbx). Set the directory of ```~/covid19``` and store all the data in that directory.
 
-### Normalize the read count and find the differentially expresssed genes
+### Normalize the read count, remove batch effect and find out the differentially expresssed genes
 
 1. Run the R script at [Normalize_differentially expressed genes.R](https://github.com/yueli8/COVID-19/blob/master/script/Normalize_differentially_expressed_genes.R). The input file is [gse147507_counts](https://github.com/yueli8/COVID-19/blob/master/input_files/gse147507_counts).
 
