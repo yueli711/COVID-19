@@ -23,7 +23,7 @@ This pipeline is designed to be used in R environment.
 * cowplot
 * scater
 * scran
-* BioParallel
+6.* BioParallel
 * BiocNeighbors
 * data.table
 * ASSIGN
@@ -61,7 +61,7 @@ This pipeline is designed to be used in R environment.
 
 4. Series 2 used as negative control: the input fiel is [56716_2negative.txt](https://github.com/yueli8/COVID-19/blob/master/Series2/56716_2negative.txt). The code is [5_6_7_16_2negative.R](https://github.com/yueli8/COVID-19/blob/master/Series2/5_6_7_16_2negative.R). It will generate [cell5_6_7_16_2.csv](https://github.com/yueli8/COVID-19/blob/master/Series2/cell5_6_7_16_2.csv) during the process.
 
-Verify the 25 gene expression signature in BALF: the input file is cell_5_6_7_16_BALF_norm.txt. The code is cell_5_6_7_16_BALF_assign.R. It will generate cell_5_6_7_16_BALF.csv and combat_cell56716_BALF.csv during the process.
+5. Verify the 25 gene expression signature in BALF: the input file is [cell_5_6_7_16_BALF_norm.txt](https://github.com/yueli8/COVID-19/blob/master/BALF/cell_5_6_7_16_BALF_norm.txt). The code is [cell_5_6_7_16_BALF_assign.R](https://github.com/yueli8/COVID-19/blob/master/BALF/cell_5_6_7_16_BALF_assign.R). It will generate [cell_5_6_7_16_BALF.csv](https://github.com/yueli8/COVID-19/blob/master/BALF/cell_5_6_7_16_BALF.csv) and [combat_cell56716_BALF.csv](https://github.com/yueli8/COVID-19/blob/master/BALF/combat_cell56716_BALF.csv) during the process.
 
 Verify the 25 gene expresson signature in PBMC: the input file is cell_5_6_7_16_PBMC_norm.txt. The code is cell_5_6_7_16_PBMC_assign.R. It will generate cell_5_6_7_16_PBMC.csv.
 
