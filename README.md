@@ -1,6 +1,6 @@
 # SARS-CoV-2 Signature
 
-This repository includes code for processing data and the analyses done for the paper "SARS-CoV-2 Early Infection Signature Identified Potential Key Infection Mechanisms and Drug Targets." `covid19_total.Rmd` script has code for the results described in the paper.
+This repository includes code for processing data and the analyses done for the paper "SARS-CoV-2 Early Infection Signature Identified Potential Key Infection Mechanisms and Drug Targets." [covid19_total.Rmd](https://github.com/yueli8/COVID-19/blob/master/covid19_total.Rmd) script has code for the results described in the paper.
 
 
 ## What is this repository for?
