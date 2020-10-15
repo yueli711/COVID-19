@@ -39,25 +39,8 @@ This pipeline is designed to be used in R environment.
 
 4. Download all the data in [covid19_inputdata](https://drive.google.com/drive/folders/1mIFiEcPm3o5FEkeBD4v3MaGjM0xazGbx). Set the directory of ```~/covid19``` and store all the data in that directory.
 
-5. Run the R script at [Normalize_differentially expressed genes.R](https://github.com/yueli8/COVID-19/blob/master/Normalize_differentially%20expressed%20genes/Normalize_differentially%20expressed%20genes.R). The input file is [gse147507_counts](https://github.com/yueli8/COVID-19/blob/master/input_files/gse147507_counts), the normalized file is [gse147507_norm.csv](https://github.com/yueli8/COVID-19/blob/master/Normalize_differentially%20expressed%20genes/gse147507_norm.csv), and the differentially expressed genes file is [gse147507_deg.csv](https://github.com/yueli8/COVID-19/blob/master/Normalize_differentially%20expressed%20genes/gse147507_deg.csv).
+5. Run the R script at [Normalize_differentially expressed genes.R](https://github.com/yueli8/COVID-19/blob/master/Normalize_differentially%20expressed%20genes/Normalize_differentially%20expressed%20genes.R). The input file is [gse147507_counts](https://github.com/yueli8/COVID-19/blob/master/input_files/gse147507_counts), the nori8/COVID-19/blob/master/input_files/combat_cell56716_BALF.csv) during the process.
 
-### Generate 25 gene expression signature
-
-1. Store the file [24celllines_4patients_norm.txt](https://github.com/yueli8/COVID-19/blob/master/input_files/24celllines_4patients_norm.txt) in the directory ```~/covid19```, run the code [cell24_4patients_25yueli.R](https://github.com/yueli8/COVID-19/blob/master/25_gene_expression_signature/cell24_4patients_25yueli.R). It will generate [cell24_4.csv](https://github.com/yueli8/COVID-19/blob/master/25_gene_expression_signature/cell24_4.csv) during the process.  
-
-2. The 25 gene expression signture and Figure 1a, Table 1, Extended Data Fig. 2 will generate after running the code.
-
-### Verify the 25 gene expression signature in test data (cell lines and clinical patients)
-
-1. Four test sets were used. (1) Series 2 is A549 cell line infected with SARS-CoV-2 compared with mock; (2) Series 15 is postmortem COVID-19 patients compared with healthy lung biopsy; (3) Bronchoalveolar lavage fluid (BALF) cells of COVID-19 patients compared with healthy controls; (4) Peripheral blood mononuclear cells  (PBMC) of COVID-19 patients compared with healthy controls. 
-
-2. We have to always put the [signature_gene_list_prior_25yueli.csv](https://github.com/yueli8/COVID-19/blob/master/input_files/signature_gene_list_prior_25yueli.csv) file in the directory of ```~/covid19```.
-
-3. Series 15 used as positive control: the input files is [56716_15positive.txt](https://github.com/yueli8/COVID-19/blob/master/input_files/56716_15positive.txt). The code is [5_6_7_16_15positive.R](https://github.com/yueli8/COVID-19/blob/master/Series15/5_6_7_16_15positive.R). It will generate [cell5_6_7_16_15.csv](https://github.com/yueli8/COVID-19/blob/master/input_files/cell5_6_7_16_15.csv) during the process.
-
-4. Series 2 used as negative control: the input fiel is [56716_2negative.txt](https://github.com/yueli8/COVID-19/blob/master/input_files/56716_2negative.txt). The code is [5_6_7_16_2negative.R](https://github.com/yueli8/COVID-19/blob/master/Series2/5_6_7_16_2negative.R). It will generate [cell5_6_7_16_2.csv](https://github.com/yueli8/COVID-19/blob/master/input_files/cell5_6_7_16_2.csv) during the process.
-
-5. Verify the 25 gene expression signature in BALF: the input file is [cell_5_6_7_16_BALF_norm.txt](https://github.com/yueli8/COVID-19/blob/master/input_files/cell_5_6_7_16_BALF_norm.txt). The code is [cell_5_6_7_16_BALF_assign.R](https://github.com/yueli8/COVID-19/blob/master/BALF/cell_5_6_7_16_BALF_assign.R). It will generate [cell_5_6_7_16_BALF.csv](https://github.com/yueli8/COVID-19/blob/master/input_files/cell_5_6_7_16_BALF.csv) and [combat_cell56716_BALF.csv](https://github.com/yueli8/COVID-19/blob/master/input_files/combat_cell56716_BALF.csv) during the process.
 
 6. Verify the 25 gene expresson signature in PBMC: the input file is [cell_5_6_7_16_PBMC_norm.txt](https://github.com/yueli8/COVID-19/blob/master/input_files/cell_5_6_7_16_PBMC_norm.txt). The code is [cell_5_6_7_16_PBMC_assign.R](https://github.com/yueli8/COVID-19/blob/master/PBMC/cell_5_6_7_16_PBMC_assign.R). It will generate [cell_5_6_7_16_PBMC.csv](https://github.com/yueli8/COVID-19/blob/master/input_files/cell_5_6_7_16_PBMC.csv).
 
@@ -80,19 +63,19 @@ The running code is [connectivity_map.R](https://github.com/yueli8/COVID-19/blob
 
 [covid19_total.R](https://github.com/yueli8/COVID-19/blob/master/covid19_total.Rmd) A script that combined all the scripts.
 
-[cell24_4patients_25yueli.R](https://github.com/yueli8/COVID-19/blob/master/25_gene_expression_signature/cell24_4patients_25yueli.R) Use 24 celllines as training set, 4 patients as test set, generate 25 gene expression signature.
+[cell24_4patients_25yueli.R](https://github.com/yueli8/COVID-19/blob/master/25_gene_expression_signature/cell24_4patients_25yueli.R) Use 24 celllines [24celllines_4patients_norm.txt](https://github.com/yueli8/COVID-19/blob/master/25_gene_expression_signature/24celllines_4patients_norm.txt)as training set, 4 patients as test set, generate 25 gene expression signature.
 
-[5_6_7_16_15positive.R](https://github.com/yueli8/COVID-19/blob/master/Series15/5_6_7_16_15positive.R) Use "signature_gene_list_prior_25yueli.csv" to test series15 as positive control.
+[5_6_7_16_15positive.R](https://github.com/yueli8/COVID-19/blob/master/Series15/5_6_7_16_15positive.R) Use [signature_gene_list_prior_25yueli.csv](https://github.com/yueli8/COVID-19/blob/master/25_gene_expression_signature/24celllines_4patients_norm.txt) to test series15 as positive control.
 
-[5_6_7_16_2negative.R](https://github.com/yueli8/COVID-19/blob/master/Series15/5_6_7_16_15positive.R) Use "signature_gene_list_prior_25yueli.csv" to test series2 as negative control.
+[5_6_7_16_2negative.R](https://github.com/yueli8/COVID-19/blob/master/Series15/5_6_7_16_15positive.R) Use [signature_gene_list_prior_25yueli.csv](https://github.com/yueli8/COVID-19/blob/master/25_gene_expression_signature/24celllines_4patients_norm.txt) to test series2 as negative control.
 
-[cell_5_6_7_16_BALF_assign.R](https://github.com/yueli8/COVID-19/blob/master/BALF/cell_5_6_7_16_BALF_assign.R) Use "signature_gene_list_prior_25yueli.csv" to test BALF data.
+[cell_5_6_7_16_BALF_assign.R](https://github.com/yueli8/COVID-19/blob/master/BALF/cell_5_6_7_16_BALF_assign.R) Use [signature_gene_list_prior_25yueli.csv](https://github.com/yueli8/COVID-19/blob/master/25_gene_expression_signature/24celllines_4patients_norm.txt) to test BALF data.
 
-[cell_5_6_7_16_PBMC_assign.R](https://github.com/yueli8/COVID-19/blob/master/PBMC/cell_5_6_7_16_PBMC_assign.R)  Use "signature_gene_list_prior_25yueli.csv" to test data.
+[cell_5_6_7_16_PBMC_assign.R](https://github.com/yueli8/COVID-19/blob/master/PBMC/cell_5_6_7_16_PBMC_assign.R)  Use [signature_gene_list_prior_25yueli.csv](https://github.com/yueli8/COVID-19/blob/master/25_gene_expression_signature/24celllines_4patients_norm.txt) to test data.
 
 [single_cell_integrate.R](https://github.com/yueli8/COVID-19/blob/master/Single_cell_integrate/single_cell_integrate.R) Input single cell files, filter, CreateSeuratObject, normalize, then integrat 12 samples.
 
-[single_cell.R](https://github.com/yueli8/COVID-19/blob/master/Single_cell_integrate/single_cell_integrate.R) Use hms_individual_integrated_OK.rds to process single cell data, draw the figures.
+[single_cell.R](https://github.com/yueli8/COVID-19/blob/master/Single_cell_integrate/single_cell_integrate.R) Use [hms_individual_integrated_OK.rds](https://drive.google.com/drive/folders/1mIFiEcPm3o5FEkeBD4v3MaGjM0xazGbx) to process single cell data, draw the figures.
 
 [Normalize_differentially expressed genes.R](https://github.com/yueli8/COVID-19/blob/master/script/complex_heatmap.R) Excluded all the fles of not infected with SARS-CoV-2, not from homo sapiens or another file Series16_A549-ACE2_SARS-CoV-2_Rux_2. Normalize,remove batch effect of 36 and 24 celllines, DESeq, differetially expressed genes, volcano plot.
 
