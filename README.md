@@ -33,7 +33,7 @@ This pipeline is designed to be used in R environment.
 * DESeq
 * pamr
 * readxl
-* ggpub
+* ggpubr
 
 3. Clone this git repository to your computer.
 
