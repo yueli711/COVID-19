@@ -80,7 +80,7 @@ This pipeline is designed to be used in R environment.
 
 The running code is [connectivity_map.R](https://github.com/yueli8/COVID-19/blob/master/Connectivity_map/connectivity_map.R). Input file is [SARS-cov2](https://github.com/yueli8/COVID-19/blob/master/Connectivity_map/SARS-cov2.csv), It will come out connectivity map figures after running the code.
 
-10. 
+
 ## Explain all the R files:
 
 1. [covid19_total.R](https://github.com/yueli8/COVID-19/blob/master/covid19_total.Rmd) A script that combined all the scripts.
