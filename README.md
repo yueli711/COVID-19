@@ -57,7 +57,7 @@ This pipeline is designed to be used in R environment.
 
 2. We have to always put the [signature_gene_list_prior_25yueli.csv](https://github.com/yueli8/COVID-19/blob/master/input_files/signature_gene_list_prior_25yueli.csv) file in the directory of ```~/covid19```.
 
-3. Series 15 used as positive control: the input files is [56716_15positive.txt](ttps://github.com/yueli8/COVID-19/blob/master/Series15/56716_15positive.txt). The code is [5_6_7_16_15positive.R](https://github.com/yueli8/COVID-19/blob/master/Series15/5_6_7_16_15positive.R). It will generate [cell5_6_7_16_15.csv](https://github.com/yueli8/COVID-19/blob/master/Series15/cell5_6_7_16_15.csv) during the process.
+3. Series 15 used as positive control: the input files is [56716_15positive.txt](https://github.com/yueli8/COVID-19/blob/master/Series15/56716_15positive.txt). The code is [5_6_7_16_15positive.R](https://github.com/yueli8/COVID-19/blob/master/Series15/5_6_7_16_15positive.R). It will generate [cell5_6_7_16_15.csv](https://github.com/yueli8/COVID-19/blob/master/Series15/cell5_6_7_16_15.csv) during the process.
 
 4. Series 2 used as negative control: the input fiel is [56716_2negative.txt](https://github.com/yueli8/COVID-19/blob/master/Series2/56716_2negative.txt). The code is [5_6_7_16_2negative.R](https://github.com/yueli8/COVID-19/blob/master/Series2/5_6_7_16_2negative.R). It will generate [cell5_6_7_16_2.csv](https://github.com/yueli8/COVID-19/blob/master/Series2/cell5_6_7_16_2.csv) during the process.
 
