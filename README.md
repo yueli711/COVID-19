@@ -23,7 +23,7 @@ This pipeline is designed to be used in R environment.
 * cowplot
 * scater
 * scran
-6.* BioParallel
+* BioParallel
 * BiocNeighbors
 * data.table
 * ASSIGN
