@@ -5,7 +5,7 @@ This repository includes code for processing data and the analyses done for the 
 
 ## What is this repository for?
 
-* 'DESeq2' R package was used to normalization the read count and find out the differetially expressed genes (DEGs). These DEGs were used in Ingenuity Pathway Analysis. 'ASSIGN' R package was used to generate a 25-gene signature. The R scripts we provide here can be used to varify the signatures in RNA-seq and single cell data. Also, it can be used to identity potential drug in ConnectivityMap database. 
+* 'DESeq2' R package was used to normalization the read count and find out the differetially expressed genes (DEGs). These DEGs were used in Ingenuity Pathway Analysis. 'ASSIGN' R package was used to generate a 25-gene signature. The R scripts we provide here can be used to verify the signatures in RNA-seq and single cell data. Also, it can be used to identity potential drug in ConnectivityMap database. 
 * We have provided the code and various intermediate data files that we produced in performing the analyses we describe in the manuscript.
 
 
