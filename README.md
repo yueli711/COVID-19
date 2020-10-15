@@ -43,7 +43,7 @@ This pipeline is designed to be used in R environment.
 
 ### Generate 25 gene expression signature
 
-1. Store the file [24celllines_4patients_norm.txt](https://github.com/yueli8/COVID-19/blob/master/input_files/24celllines_4patients_norm.txt) in the directory ```~/covid19```, run the code [cell24_4patients_25yueli.R](https://github.com/yueli8/COVID-19/blob/master/25%20gene%20expression%20signature/cell24_4patients_25yueli.R). It will generate [cell24_4.csv](https://github.com/yueli8/COVID-19/blob/master/25 gene expression signature/cell24_4.csv) during the process.  
+1. Store the file [24celllines_4patients_norm.txt](https://github.com/yueli8/COVID-19/blob/master/input_files/24celllines_4patients_norm.txt) in the directory ```~/covid19```, run the code [cell24_4patients_25yueli.R](https://github.com/yueli8/COVID-19/blob/master/25%20gene%20expression%20signature/cell24_4patients_25yueli.R). It will generate [cell24_4.csv](https://github.com/yueli8/COVID-19/blob/master/25_gene_expression_signature/cell24_4.csv) during the process.  
 
 2. The 25 gene expression signture and Figure 1a, Table 1, Extended Data Fig. 2 will generate after running the code.
 
