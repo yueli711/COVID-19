@@ -53,7 +53,11 @@ This pipeline is designed to be used in R environment.
 
 ### Verify the 25 gene expression signature in the test data (cell lines and clinical patients)
 
-1. Four test sets were used. (1) Series 2 is A549 cell line infeted with SARS-CoV-2 compared with mock; (2) Series 15 is postmortem COVID-19 patients compared with healthy lung biospy; (3) Bronchoalveolar lavage fluid (BALF) cells of COVID-19 patients compared with healthy control; (4) Peripheral blood mononuclear cells (PBMC) of COVID-19 patients compared with healthy controls.  
+1. Four test sets were used. (1) Series 2 is A549 cell line infeted with SARS-CoV-2 compared with mock; (2) Series 15 is postmortem COVID-19 patients compared with healthy lung biospy; (3) Bronchoalveolar lavage fluid (BALF) cells of COVID-19 patients compared with healthy control; (4) Peripheral blood mononuclear cells (PBMC) of COVID-19 patients compared with healthy controls.
+
+2. We have to always put the [signature_gene_list_prior_25yueli.csv](https://github.com/yueli8/COVID-19/blob/master/input_files/signature_gene_list_prior_25yueli.csv) file in the directory of ```~/covid19```.
+
+3. Seires 15 used as a positive
  
  
 ### Expression patterns of the 25 gene signature in single cell RNA-seq data
