@@ -1,7 +1,7 @@
 library(ComplexHeatmap)
 library(circlize)
 #cell56716_PBMC complex_heatmap
-setwd("/home/li/covid19/result01/complex_heatmap")
+setwd("~/complex_heatmap")
 heat <- read.table(file = 'combat_cell56716_PBMC.txt', header = T)
 heat_matrix <- as.matrix(heat)
 #pdf('2_heat_map-2.pdf')
