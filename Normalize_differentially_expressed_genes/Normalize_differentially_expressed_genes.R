@@ -3,7 +3,7 @@ library(data.table)
 library(DESeq)
 library(limma)
 library(DESeq)
-setwd("/home/li/covid19/result01/Normalize_differentially expressed genes")
+setwd("~/Normalize_differentially expressed genes")
 cts<-read.table("gse147507_counts",head=TRUE)
 write.csv(cts,"gse147507_counts.csv")
 #setup DESeqDataSetFromMatrix
@@ -81,7 +81,7 @@ DEG1=na.omit(DEG1)
 logFC_cutoff=with(DEG1,mean(abs(log2FoldChange))+2*sd(abs(log2FoldChange)))
 logFC_cutoff
 2^logFC_cutoff   
-# 返回结果为 3.67
+# return 3.67
 DEG1$change=as.factor(ifelse(DEG1$pvalue<0.05 &  abs(DEG1$log2FoldChange)>logFC_cutoff,
                              ifelse(DEG1$log2FoldChange>logFC_cutoff,'UP','DOWN'),'NOT'))
 this_tile=paste('Cutoff for logFC is ',round(logFC_cutoff,3),
@@ -89,12 +89,12 @@ this_tile=paste('Cutoff for logFC is ',round(logFC_cutoff,3),
                 '\nThe number of down gene is ',nrow(DEG1[DEG1$change=='DOWN',]))
 library(ggplot2)
 g=ggplot(data=DEG1,
-         aes(x=log2FoldChange,y=-log10(pvalue),   #这里将pvalue取负对数
+         aes(x=log2FoldChange,y=-log10(pvalue),   
              color=change)) +
-  geom_point(alpha=0.4,size=1.75) +     #绘制点图
+  geom_point(alpha=0.4,size=1.75) +     
   theme_set(theme_set(theme_bw(base_size=20))) +
-  xlab("log2 fold change")+ylab("-log10 pvalue") +    #轴标签
+  xlab("log2 fold change")+ylab("-log10 pvalue") +   
   ggtitle(this_tile)+theme(plot.title=element_text(size=15,hjust=0.5)) +
-  scale_color_manual(values=c('blue','black','red'))   #设定颜色
+  scale_color_manual(values=c('blue','black','red'))  
 g
 
