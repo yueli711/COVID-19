@@ -9,7 +9,7 @@ This repository includes code for processing data and the analyses done for the 
 * We have provided the code and various intermediate data files that we produced in performing the analyses we describe in the manuscript.
 
 
-### How to normalize and find out the differentially expressed genes of the RNA-Seq data
+### Install the software, download the data and set the directory
 
 This pipeline is designed to be used in R environment.
 
