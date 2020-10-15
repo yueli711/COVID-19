@@ -41,15 +41,15 @@ This pipeline is designed to be used in R environment.
 
 ### Normalize the read count and find the differentially expresssed genes
 
-1. Run the R script at [Normalize_differentially expressed genes.R](https://github.com/yueli8/COVID-19/blob/master/script/Normalize_differentially_expressed_genes.R). The input file is [gse147507_counts](https://github.com/yueli8/COVID-19/blob/master/input_files/gse147507_counts)
+1. Run the R script at [Normalize_differentially expressed genes.R](https://github.com/yueli8/COVID-19/blob/master/script/Normalize_differentially_expressed_genes.R). The input file is [gse147507_counts](https://github.com/yueli8/COVID-19/blob/master/input_files/gse147507_counts).
 
-2. After remove the batch effect, it will come out two files: [ComBat_data(all)(counts).txt_24](https://github.com/yueli8/COVID-19/blob/master/Normalize_differentially_expressed_genes/ComBat_data(all)(counts).txt_24) and [ComBat_data(all)(counts).txt_36](https://github.com/yueli8/COVID-19/blob/master/Normalize_differentially_expressed_genes/ComBat_data(all)(counts).txt_36). The first one is for series 5, 6, 7, 16, and the second is for series 2, 5, 6, 7, 15, 16. Series 5,6,7 16 were used to generate geneexpression signature, and series 2 is used as negative control, while series 15 is used as positive control. 
+2. After remove the batch effect, it will come out two files: [ComBat_data(all)(counts).txt_24](https://github.com/yueli8/COVID-19/blob/master/Normalize_differentially_expressed_genes/ComBat_data(all)(counts).txt_24) and [ComBat_data(all)(counts).txt_36](https://github.com/yueli8/COVID-19/blob/master/Normalize_differentially_expressed_genes/ComBat_data(all)(counts).txt_36). The first one is for series 5, 6, 7, 16, and the second is series 2, 5, 6, 7, 15, 16. Series 5, 6, 7, 16 were used to generate gene expression signatures, and series 2 is used as negative control, while series 15 is positive control. 
 
-3. the normalied file is [gse147507_norm.csv](https://github.com/yueli8/COVID-19/blob/master/Normalize_differentially_expressed_genes/gse147507_norm.csv), and the differentially expressed genes file is [gse147507_deg.csv](https://github.com/yueli8/COVID-19/blob/master/Normalize_differentially_expressed_genes/gse147507_deg.csv).
+3. The normalized file is [gse147507_norm.csv](https://github.com/yueli8/COVID-19/blob/master/Normalize_differentially_expressed_genes/gse147507_norm.csv), and the differentially expressed genes file is [gse147507_deg.csv](https://github.com/yueli8/COVID-19/blob/master/Normalize_differentially_expressed_genes/gse147507_deg.csv).
 
 
 
-### Generate 25 gene expression signature
+### Generate a 25 gene expression signature
 
 1. Store the file [24celllines_4patients_norm.txt](https://github.com/yueli8/COVID-19/blob/master/25_gene_expression_signature/24celllines_4patients_norm.txt) in the directory ```~/covid19```, run the code [cell24_4patients_25yueli.R](https://github.com/yueli8/COVID-19/blob/master/script/cell24_4patients_25yueli.R). It will generate [cell24_4.csv](https://github.com/yueli8/COVID-19/blob/master/25_gene_expression_signature/cell24_4.csv) during the process.
 
