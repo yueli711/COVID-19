@@ -103,6 +103,10 @@ The running code is [connectivity_map.R](https://github.com/yueli8/COVID-19/blob
 
 10. [complex_heatmap.R](https://github.com/yueli8/COVID-19/blob/master/script/complex_heatmap.R) Draw complex heatmap to test remove batch effect.
 
+11. [Barplot_verify.R](https://github.com/yueli8/COVID-19/blob/master/Barplot_verify/Barplot_verify.R) Used to draw bar plot of the Series 2, 15, BALF and PBMC.
+
+12. [connectivity_map.R](https://github.com/yueli8/COVID-19/blob/master/Connectivity_map/connectivity_map.R) Used the [SARS-cov2.csv](https://github.com/yueli8/COVID-19/blob/master/Connectivity_map/SARS-cov2.csv) to draw the connectivity map. 
+
 
 ## Contact information
 
