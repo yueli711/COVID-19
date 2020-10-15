@@ -73,7 +73,7 @@ This pipeline is designed to be used in R environment.
 
 ### Pharmacologic signature connections identified in the ConnectivityMap (CMAP) database.
 
-The running code is [connectivity_map.R](https://github.com/yueli8/COVID-19/blob/master/Connectivity_map/connectivity_map.R). Input file is [SARS-cov2](https://github.com/yueli8/COVID-19/blob/master/Connectivity_map/SARS-cov2.csv), It will come out the figures after running the code.
+The running code is [connectivity_map.R](https://github.com/yueli8/COVID-19/blob/master/Connectivity_map/connectivity_map.R). Input file is [SARS-cov2](https://github.com/yueli8/COVID-19/blob/master/Connectivity_map/SARS-cov2.csv), It will come out connectivity map figures after running the code.
 
 
 # Explain all the R files:
