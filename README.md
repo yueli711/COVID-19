@@ -57,7 +57,15 @@ This pipeline is designed to be used in R environment.
 
 2. We have to always put the [signature_gene_list_prior_25yueli.csv](https://github.com/yueli8/COVID-19/blob/master/input_files/signature_gene_list_prior_25yueli.csv) file in the directory of ```~/covid19```.
 
-3. Seires 15 used as a positive
+3. Seires 15 used as a positiveSeries 15 used as positive control: the input files is 56716_15positive.txt. The code is 5_6_7_16_15positive.R. It will generate cell5_6_7_16_15.csv during the process.
+
+Series 2 used as negative control: the input fiel is 56716_2negative.txt. The code is 5_6_7_16_2negative.R. It will generate cell5_6_7_16_2.csv during the process.
+
+Verify the 25 gene expression signature in BALF: the input file is cell_5_6_7_16_BALF_norm.txt. The code is cell_5_6_7_16_BALF_assign.R. It will generate cell_5_6_7_16_BALF.csv and combat_cell56716_BALF.csv during the process.
+
+Verify the 25 gene expresson signature in PBMC: the input file is cell_5_6_7_16_PBMC_norm.txt. The code is cell_5_6_7_16_PBMC_assign.R. It will generate cell_5_6_7_16_PBMC.csv.
+
+All the results can been shown in Barplots. There are two ways to create barplot: one is without excel file,and the other is with excel file. If without excel file, we have to create an excel file, so the code is bar_code_yueli.R. The input file should be the result of pathway_activity_testset in samples Series2, 5 , BALF and PBMC. If we can creat an excel file by our own: DATA.xlsx, then we can directly use Barplot_verify.R.
  
  
 ### Expression patterns of the 25 gene signature in single cell RNA-seq data
