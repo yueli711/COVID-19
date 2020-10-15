@@ -99,7 +99,7 @@ The running code is [connectivity_map.R](https://github.com/yueli8/COVID-19/blob
 
 8. [single_cell.R](https://github.com/yueli8/COVID-19/blob/master/Single_cell_cluster_figure/single_cell.R) Use [hms_individual_integrated_OK.rds](https://drive.google.com/drive/folders/1mIFiEcPm3o5FEkeBD4v3MaGjM0xazGbx) to process single cell data, draw the figures.
 
-9. [Normalize_differentially expressed genes.R](https://github.com/yueli8/COVID-19/blob/master/script/Normalize_differentially expressed genes.R) Excluded all the fles of not infected with SARS-CoV-2, not from homo sapiens or another file Series16_A549-ACE2_SARS-CoV-2_Rux_2. Normalize,remove batch effect of 36 and 24 celllines, DESeq, differetially expressed genes, volcano plot.
+9. [Normalize_differentially expressed genes.R](https://github.com/yueli8/COVID-19/blob/master/Normalize_differentially_expressed_genes/Normalize_differentially_expressed_genes.R) Excluded all the fles of not infected with SARS-CoV-2, not from homo sapiens or another file Series16_A549-ACE2_SARS-CoV-2_Rux_2. Normalize,remove batch effect of 36 and 24 celllines, DESeq, differetially expressed genes, volcano plot.
 
 10. [complex_heatmap.R](https://github.com/yueli8/COVID-19/blob/master/script/complex_heatmap.R) Draw complex heatmap to test remove batch effect.
 
