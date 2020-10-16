@@ -49,7 +49,7 @@ This pipeline is designed to be used in R environment.
 
 
 
-### Batch adjustment and generate a 25 gene expression signature
+### Batch adjustment and generate a 25 gene expression signature in training set (cell lines of series 5, 6, 7, 16)
 
 1. Store the file [24celllines_4patients_norm.txt](https://github.com/yueli8/COVID-19/blob/master/25_gene_expression_signature/24celllines_4patients_norm.txt) in the directory ```~/covid19```, run the code [cell24_4patients_25yueli.R](https://github.com/yueli8/COVID-19/blob/master/script/cell24_4patients_25yueli.R). It will generate [cell24_4.csv](https://github.com/yueli8/COVID-19/blob/master/25_gene_expression_signature/cell24_4.csv) during the process.
 
