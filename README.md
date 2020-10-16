@@ -41,7 +41,7 @@ This pipeline is designed to be used in R environment.
 
 ### Normalize the read count, remove batch effect and find out the differentially expresssed genes
 
-1. Run the R script at [Normalize_differentially expressed genes.R](https://github.com/yueli8/COVID-19/blob/master/script/Normalize_differentially_expressed_genes.R). The input file is [gse147507_counts](https://github.com/yueli8/COVID-19/blob/master/input_files/gse147507_counts).
+1. Run the R script of [Normalize_differentially expressed genes.R](https://github.com/yueli8/COVID-19/blob/master/script/Normalize_differentially_expressed_genes.R). The input file is [gse147507_counts](https://github.com/yueli8/COVID-19/blob/master/input_files/gse147507_counts).
 
 2. After remove the batch effect, it will come out two files: [ComBat_data(all)(counts).txt_24](https://github.com/yueli8/COVID-19/blob/master/Normalize_differentially_expressed_genes/ComBat_data(all)(counts).txt_24) and [ComBat_data(all)(counts).txt_36](https://github.com/yueli8/COVID-19/blob/master/Normalize_differentially_expressed_genes/ComBat_data(all)(counts).txt_36). The first one is for series 5, 6, 7, 16, and the second is series 2, 5, 6, 7, 15, 16. Series 5, 6, 7, 16 were used to generate gene expression signatures, and series 2 is used as negative control, while series 15 is positive control. 
 
