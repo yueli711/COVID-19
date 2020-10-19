@@ -13,7 +13,7 @@ suppressMessages(require(BiocParallel))
 
 
 ###Barplots
-setwd("/home/li/covid19/result01/bar_code")
+setwd("~/bar_code")
 test_validation<- as.data.frame(read_excel("DATA.xlsx", sheet= "Combined"))
 test_validation$Sample<- factor(test_validation$Sample, levels= c( "Lung Biopsy","A549","BALF/PBMC"))
 test_validation$Point<- factor(test_validation$Point, levels= c("Lung Biopsy","A549", "BALF", "PBMC"))
