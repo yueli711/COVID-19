@@ -80,6 +80,8 @@ This pipeline is designed to be used in R environment.
 
 3. Running the code [single_cell.R](https://github.com/yueli8/COVID-19/blob/master/Single_cell_cluster_figure/single_cell.R). After nameed each clusters, plotted, we can have the Figure 2 and Extended Data Fig. 4-11.
 
+4. tSNE_singlecell folder is used to generate tSNE plot of single cell. 
+
 ### Pharmacologic signature connections identified in the ConnectivityMap (CMAP) database.
 
 1. The running code is [connectivity_map.R](https://github.com/yueli8/COVID-19/blob/master/Connectivity_map/connectivity_map.R). Input file is [SARS-cov2](https://github.com/yueli8/COVID-19/blob/master/Connectivity_map/SARS-cov2.csv), It will come out connectivity map figures after running the code.
