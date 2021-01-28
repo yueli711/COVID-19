@@ -26,7 +26,7 @@ new.cluster.ids <- c("Macrophage", "Macrophage", "Macrophage", "Macrophage", "Ne
 names(new.cluster.ids) <- levels(pbmc)
 
 hms_tsne <- RenameIdents(pbmc, new.cluster.ids)
-DimPlot(hms_tsne, reduction = "tsne", label = TRUE, pt.size = 0.5)
+DimPlot(hms_tsne, reduction = "tsne", label = TRUE, pt.size = 0.5,label.size = 6)
 
 saveRDS(hms_tsne, file = "hms_tsne.rds")
 
