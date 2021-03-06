@@ -13,7 +13,7 @@ This repository includes code for processing data and the analyses done for the 
 
 This pipeline is designed to be used in R environment.
 
-1. install the [R statistical package](https://www.r-project.org/). We used version 3.6.1.
+1. Install the [R statistical package](https://www.r-project.org/). We used version 3.6.1.
 
 2. Install the following R packages, which can be obtained using either the install.packages function in R or via the [Bioconductor framework](http://www.bioconductor.org/):
 
